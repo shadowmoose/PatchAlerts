@@ -3,6 +3,7 @@
 import os
 import traceback
 import yaml
+import sys
 from util import db
 from util import printing as p
 
@@ -12,13 +13,14 @@ from sites.battlerite import Battlerite
 from sites.leagueoflegends import LeagueOfLegends
 from sites.huntshowdown import HuntShowdown
 from sites.pathofexile import PathOfExile
-import sys
+from sites.warframe import Warframe
+
 
 #  https://discordapp.com/developers/docs/resources/channel#embed-object-embed-author-structure
 #  https://leovoel.github.io/embed-visualizer/
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 alerts = [Discord()]
-sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile()]
+sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe()]
 
 
 config_file = os.path.join(storage_dir, 'config.yml')
@@ -60,34 +62,32 @@ db.create(os.path.join(storage_dir, 'db.sqldb'))
 
 
 # noinspection PyBroadException
-try:
-	updates = []
-	for s in sites:
-		if not s.enabled:
-			continue
-		# noinspection PyBroadException
-		try:
-			print('Scanning %s for updates...' % s.name)
-			for u in s.scan():
-				updates.append(u)
-		except Exception as ex:
-			traceback.print_exc()
-			sys.exit(10)  # TODO: only with text flag.
 
-	print('Found %s updates.' % len(updates))
+updates = []
+for s in sites:
+	if not s.enabled:
+		continue
+	# noinspection PyBroadException
+	try:
+		print('Scanning %s for updates...' % s.name)
+		for u in s.scan():
+			updates.append(u)
+	except Exception as ex:
+		traceback.print_exc()
+		sys.exit(10)  # TODO: only with text flag.
 
-	for u in updates:
-		if db.check_completed(u):
-			p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
-			continue
-		p.out('\tFound update: [%s] %s' % (u.game, u.name))
-		for a in alerts:
-			if a.enabled:
-				a.alert(u)
-		db.put_completed(u)
-except Exception as e:
-	traceback.print_exc()
-	pass
+print('Found %s updates.' % len(updates))
+
+for u in updates:
+	if db.check_completed(u):
+		p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
+		continue
+	p.out('\tFound update: [%s] %s' % (u.game, u.name))
+	for a in alerts:
+		if a.enabled:
+			a.alert(u)
+	db.put_completed(u)
+
 
 # TODO: Error reporting for parsers.
 

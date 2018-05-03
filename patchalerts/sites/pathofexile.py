@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class PathOfExile(Site):
 	def __init__(self):
-		super().__init__('PathOfExile')
+		super().__init__('Path of Exile')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://www.pathofexile.com/forum/view-forum/patch-notes").text, "html.parser")
