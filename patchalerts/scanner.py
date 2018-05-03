@@ -1,16 +1,24 @@
+#!/usr/bin/env python3
+
 import os
 import traceback
 import yaml
-from sites.battlerite import Battlerite
-from alerts.discord import Discord
 from classes import db
 from classes import printing as p
+
+from alerts.discord import Discord
+
+from sites.battlerite import Battlerite
+from sites.leagueoflegends import LeagueOfLegends
+from sites.huntshowdown import HuntShowdown
+from sites.pathofexile import PathOfExile
+
 
 #  https://discordapp.com/developers/docs/resources/channel#embed-object-embed-author-structure
 #  https://leovoel.github.io/embed-visualizer/
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 alerts = [Discord()]
-sites = [Battlerite()]
+sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile()]
 
 
 config_file = os.path.join(storage_dir, 'config.yml')
@@ -70,8 +78,9 @@ try:
 
 	for u in updates:
 		if db.check_completed(u):
-			p.out('\tAlready handled: %s' % u.name)
+			p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
 			continue
+		p.out('\tFound update: [%s] %s' % (u.game, u.name))
 		for a in alerts:
 			if a.enabled:
 				a.alert(u)
@@ -79,3 +88,5 @@ try:
 except Exception as e:
 	traceback.print_exc()
 	pass
+
+
