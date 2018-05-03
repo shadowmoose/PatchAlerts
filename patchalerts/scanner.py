@@ -1,23 +1,28 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import os
 import traceback
 import yaml
-
-
-from patchalerts.sites.battlerite import Battlerite
-from patchalerts.alerts.discord import Discord
-
+from sites.battlerite import Battlerite
+from alerts.discord import Discord
+from classes import db
+from classes import printing as p
 
 #  https://discordapp.com/developers/docs/resources/channel#embed-object-embed-author-structure
 #  https://leovoel.github.io/embed-visualizer/
+storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 alerts = [Discord()]
 sites = [Battlerite()]
-config_file = '../config.yml'
+
+
+config_file = os.path.join(storage_dir, 'config.yml')
+error_dir = os.path.join(storage_dir, 'errors/')
+
+os.makedirs(error_dir, exist_ok=True)
 
 # =======  LOAD SETTINGS  ========
-with open(config_file, 'r') as f:
-	config = yaml.safe_load(f)
+config = {'alerts': {}, 'sites': {}}
+if os.path.exists(config_file):
+	with open(config_file, 'r') as f:
+		config = yaml.safe_load(f)
 
 alert_data = config['alerts']
 site_data = config['sites']
@@ -38,23 +43,12 @@ for s in sites:
 			print('Configured Site: %s' % s.name)
 			print('\t+%s' % s.enabled)
 	out['sites'][s.name] = s.get_save_obj()
-# ======= SETTINGS APPLIED ========
 
 with open(config_file, 'w') as yaml_file:
 	yaml.dump(out, yaml_file, default_flow_style=False)
+# ======= SETTINGS APPLIED ========
 
-# instantiate a chrome options object so you can set the size and headless preference
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920x1080")
-
-# download the chrome driver from https://sites.google.com/a/chromium.org/chromedriver/downloads and put it in the
-# current directory
-chrome_driver = os.path.abspath(os.getcwd() + "/../lib/chromedriver.exe")  # TODO: Downloader, perhaps.
-print("Using driver: %s" % chrome_driver)
-
-# Create the Chrome instance.
-driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver)
+db.create(os.path.join(storage_dir, 'db.sqldb'))
 
 
 # noinspection PyBroadException
@@ -63,23 +57,25 @@ try:
 	for s in sites:
 		if not s.enabled:
 			continue
-		for u in s.scan(driver):
-			updates.append(u)
+		# noinspection PyBroadException
+		try:
+			print('Scanning %s for updates...' % s.name)
+			for u in s.scan():
+				updates.append(u)
+		except Exception as ex:
+			traceback.print_exc()
+			# screenshot
 
 	print('Found %s updates.' % len(updates))
 
 	for u in updates:
-		# TODO: Check if this update has been handled before.
+		if db.check_completed(u):
+			p.out('\tAlready handled: %s' % u.name)
+			continue
 		for a in alerts:
 			if a.enabled:
 				a.alert(u)
+		db.put_completed(u)
 except Exception as e:
 	traceback.print_exc()
 	pass
-
-# capture the screen
-# driver.get_screenshot_as_file("capture.png")
-
-if driver:
-	driver.quit()
-	print('Driver terminated.')

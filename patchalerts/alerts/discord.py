@@ -1,5 +1,6 @@
-from patchalerts.classes.discord_hooks import Webhook
-from patchalerts.alerts.alert import Alert
+from classes.discord_hooks import Webhook
+from alerts.alert_class import Alert
+from classes import printing as p
 
 
 class Discord(Alert):
@@ -19,7 +20,7 @@ class Discord(Alert):
 		return ret
 
 	def alert(self, upd):
-		print('Discord:: Sending %s' % upd)
+		p.out('Discord:: Sending %s' % upd)
 		embed = Webhook(self.webhook, color=123123)
 		embed.set_author(name=upd.game, icon=upd.thumb, url=upd.url)
 		embed.set_title(title=upd.name, url=upd.url)

@@ -1,4 +1,6 @@
-from patchalerts.wrappers.updates import Update
+from bs4 import BeautifulSoup
+import requests
+from wrappers.updates import Update
 
 
 class Battlerite:
@@ -16,16 +18,16 @@ class Battlerite:
 				ret[k] = v
 		return ret
 
-	def scan(self, browser):
-		browser.get("https://blog.battlerite.com/category/updates/")
-		elems = browser.find_elements_by_xpath("//article[@id and contains(@id, 'post-')]")
+	def scan(self):
+		soup = BeautifulSoup(requests.get("https://blog.battlerite.com/category/updates/").text, "html.parser")
+		elems = soup.find_all('article', id=lambda x: x and 'post' in x.lower())
 		for elem in elems:
-			link = elem.find_element_by_tag_name('a')  # .find_element_by_xpath("//a[@href and contains(text(), 'Patch')]")
-			img = elem.find_element_by_tag_name('img')
-			dsc = elem.find_element_by_class_name('entry-content')
-			_url = link.get_attribute("href")
+			link = elem.find('a')  # .find_element_by_xpath("//a[@href and contains(text(), 'Patch')]")
+			img = elem.find('img')
+			dsc = elem.find(attrs={"class": 'entry-content'})
+			_url = link["href"]
 			_title = link.text
-			_img = img.get_attribute('src')
+			_img = img['src']
 			_desc = dsc.text
 			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, image=_img)
 
