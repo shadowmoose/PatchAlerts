@@ -1,3 +1,9 @@
+"""
+
+	Taken from https://github.com/kyb3r/dhooks.
+	Go thank them!
+
+"""
 import json
 import requests
 import time

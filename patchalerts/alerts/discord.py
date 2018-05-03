@@ -1,6 +1,6 @@
-from classes.discord_hooks import Webhook
+from wrappers.discord_hooks import Webhook
 from alerts.alert_class import Alert
-from classes import printing as p
+from util import printing as p
 
 
 class Discord(Alert):

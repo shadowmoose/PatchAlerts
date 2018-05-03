@@ -3,8 +3,8 @@
 import os
 import traceback
 import yaml
-from classes import db
-from classes import printing as p
+from util import db
+from util import printing as p
 
 from alerts.discord import Discord
 
