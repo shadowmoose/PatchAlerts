@@ -10,3 +10,10 @@ script:
 - coverage run ./patchalerts/scanner.py
 after_script:
 - COVERALLS_PARALLEL=true coveralls
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+    on_start: never
+    on_cancel: never
+    on_error: always

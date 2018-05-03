@@ -12,7 +12,7 @@ from sites.battlerite import Battlerite
 from sites.leagueoflegends import LeagueOfLegends
 from sites.huntshowdown import HuntShowdown
 from sites.pathofexile import PathOfExile
-
+import sys
 
 #  https://discordapp.com/developers/docs/resources/channel#embed-object-embed-author-structure
 #  https://leovoel.github.io/embed-visualizer/
@@ -72,7 +72,7 @@ try:
 				updates.append(u)
 		except Exception as ex:
 			traceback.print_exc()
-			# screenshot
+			sys.exit(10)  # TODO: only with text flag.
 
 	print('Found %s updates.' % len(updates))
 
