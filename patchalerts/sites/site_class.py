@@ -3,7 +3,7 @@
 
 class Site:
 	def __init__(self, name):
-		self.enabled = False
+		self.enabled = True  # On by default.
 		self.name = name
 
 	def load(self, values):
