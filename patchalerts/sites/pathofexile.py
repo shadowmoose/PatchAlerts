@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from wrappers.updates import Update
+from wrappers.update import Update
 from sites.site_class import Site
 
 
