@@ -11,9 +11,7 @@ It will then scan the patch notes for those games. If it finds a new update, it 
 -----------------
 ## Supported Games:
 
-PatchAlerts supports most of the largest games out there! 
-
-Here's a full list:
+PatchAlerts supports most of the largest games out there! Here's a full list:
 
 |  | Supported Games |
 | ----- | ------------- |
@@ -35,9 +33,9 @@ Here's a full list:
 
 ## Requirements:
 
-It runs in [python 3](https://travis-ci.org/shadowmoose/PatchAlerts), and has no UI. It's perfect for throwing onto your own server somewhere, scheduled to run as often as you like. 
+It runs in [python 3](https://www.python.org/downloads/), and has no UI. It's perfect for throwing onto your own server somewhere, scheduled to run as often as you like. 
 
-The only alert method currently supported is via Discord Webhook, which is a simple way to grant posting access without adding a whole user to your server. You'll need to create a hook in your [Discord Channel Settings](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks). You simply need to edit the URL created by the webhook into the configuration file (```build/config.yml```), at 
+The only alert method currently supported is via Discord Webhook, which is a simple way to grant posting access without adding a whole user to your server. You'll need to create a hook in your [Discord Channel Settings](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks). You simply need to edit the URL created by the webhook into the configuration file (```build/config.yml```), like so:
 ```
 alerts: 
     Discord: 
