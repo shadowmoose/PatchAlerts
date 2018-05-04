@@ -21,7 +21,7 @@ class HuntShowdown(Site):
 			_title = ttl.text
 			_img = 'https://www.huntshowdown.com' + img['src']
 			_desc = dsc.text
-			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, thumb=_img)
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_img, color="#cc0000")
 
 
 if __name__ == "__main__":

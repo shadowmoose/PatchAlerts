@@ -20,12 +20,17 @@ alerts:
 
 While you're in there, make sure to set ```enabled: True``` for whatever Alerts and Games you want active.
 
+-----------------
 ## Supported Games:
 *Depending on my free time and interest, I may expand the list of supported games or alert methods. If you have one you'd like added, please open a request.*
 
-| Supported Games 
+| Supported Games |
 | ------------- |
-| Path of Exile  | 
-| League of Legends  |
-| Hunt: Showdown |
 | Battlerite |
+| League of Legends |
+| Hunt: Showdown |
+| Path of Exile |
+| Warframe |
+
+=================
+

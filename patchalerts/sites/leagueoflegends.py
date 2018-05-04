@@ -20,7 +20,7 @@ class LeagueOfLegends(Site):
 			_title = ttl.text
 			_img = 'https://na.leagueoflegends.com' + img['src']
 			_desc = dsc.text
-			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, thumb=_img)
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_img, color="#e6ac00")
 
 
 if __name__ == "__main__":

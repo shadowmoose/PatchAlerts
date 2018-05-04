@@ -1,9 +1,11 @@
 import os
 import subprocess
 
+backup_version = '1.0'
+
 
 # Return the git revision as a string
-def git_version():
+def _git_version():
 	def _minimal_ext_cmd(cmd):
 		# construct minimal environment
 		env = {}
@@ -15,8 +17,8 @@ def git_version():
 		env['LANGUAGE'] = 'C'
 		env['LANG'] = 'C'
 		env['LC_ALL'] = 'C'
-		_out = subprocess.Popen(cmd, stdout=subprocess.PIPE, env=env,
-								cwd=os.path.abspath(os.path.dirname(os.path.realpath(__file__)))).communicate()[0]
+		_cwd = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+		_out = subprocess.Popen(cmd, stdout=subprocess.PIPE, env=env, cwd=_cwd).communicate()[0]
 		return _out
 
 	try:
@@ -25,9 +27,17 @@ def git_version():
 		if len(git_revision) == 0:
 			raise OSError()
 	except OSError:
-		git_revision = "Unknown"
-
+		git_revision = None
 	return git_revision
 
 
-print('Version:', git_version())
+def get_version():
+	v = _git_version()
+	if v:
+		return v
+	return backup_version
+
+
+# noinspection PyRedeclaration
+current_version = get_version()
+

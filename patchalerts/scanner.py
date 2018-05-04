@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
-
+import argparse
 import os
+import sys
 import traceback
 import yaml
-import sys
 from util import db
 from util import printing as p
 
 from alerts.discord import Discord
-
-from sites.battlerite import Battlerite
-from sites.leagueoflegends import LeagueOfLegends
-from sites.huntshowdown import HuntShowdown
-from sites.pathofexile import PathOfExile
-from sites.warframe import Warframe
+from sites import site_class
 
 
-#  https://discordapp.com/developers/docs/resources/channel#embed-object-embed-author-structure
-#  https://leovoel.github.io/embed-visualizer/
+parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
+parser.add_argument("--strict", help="Tells the program to exit on errors.", action="store_true")
+parser.add_argument("--update", help="Update the config file and exit.", action="store_true")
+parser.add_argument("--base_dir", help="Override base directory.", type=str, metavar='')
+args = parser.parse_args()
+
+
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
+if args.base_dir:
+	storage_dir = args.base_dir.strip()
 alerts = [Discord()]
-sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe()]
+sites = site_class.all_sites()
 
 
 config_file = os.path.join(storage_dir, 'config.yml')
@@ -60,21 +62,23 @@ with open(config_file, 'w') as yaml_file:
 
 db.create(os.path.join(storage_dir, 'db.sqldb'))
 
+if args.update:
+	print('Update complete. Exiting.')
+	sys.exit(0)
 
-# noinspection PyBroadException
 
 updates = []
 for s in sites:
 	if not s.enabled:
 		continue
-	# noinspection PyBroadException
 	try:
 		print('Scanning %s for updates...' % s.name)
 		for u in s.scan():
 			updates.append(u)
-	except Exception as ex:
+	except Exception:
+		if args.strict:
+			raise
 		traceback.print_exc()
-		sys.exit(10)  # TODO: only with text flag.
 
 print('Found %s updates.' % len(updates))
 
@@ -85,10 +89,11 @@ for u in updates:
 	p.out('\tFound update: [%s] %s' % (u.game, u.name))
 	for a in alerts:
 		if a.enabled:
-			a.alert(u)
+			try:
+				a.alert(u)
+			except Exception:
+				if args.strict:
+					raise
+				traceback.print_exc()
 	db.put_completed(u)
-
-
-# TODO: Error reporting for parsers.
-
 

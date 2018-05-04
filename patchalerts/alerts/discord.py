@@ -1,13 +1,14 @@
 from wrappers.discord_hooks import Webhook
 from alerts.alert_class import Alert
 from util import printing as p
+from util import version
 
 
 class Discord(Alert):
 	def __init__(self):
 		super().__init__('Discord')
 		self.webhook = None
-		self.icon = 'https://i.imgur.com/rdm3W9t.png'
+		self._icon = 'https://i.imgur.com/WejuXH2.png'
 
 	def load(self, values):
 		self.__dict__.update(**values)
@@ -21,7 +22,7 @@ class Discord(Alert):
 
 	def alert(self, upd):
 		p.out('Discord:: Sending %s' % upd)
-		embed = Webhook(self.webhook, color=123123)
+		embed = Webhook(self.webhook, color=upd.color)
 		embed.set_author(name=upd.game, icon=upd.thumb, url=upd.url)
 		embed.set_title(title=upd.name, url=upd.url)
 		embed.set_desc(upd.description)
@@ -29,9 +30,6 @@ class Discord(Alert):
 		#  embed.add_field(name='Another Field', value='1234')
 		embed.set_thumbnail(upd.thumb)
 		embed.set_image(upd.image)
-		embed.set_footer(text='Automatically generated.', icon=self.icon, ts=True)
+		embed.set_footer(text='PatchAlerts [v:%s].' % version.current_version, icon=self._icon, ts=True)
 		embed.post()
 		return True
-
-
-

@@ -18,7 +18,7 @@ class Warframe(Site):
 			_title = link.text
 			_desc = link.text
 			_thumb = 'http://i.imgur.com/lh5YKoc.png'
-			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, thumb=_thumb)
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_thumb, color='#C0C0C0')
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ class PathOfExile(Site):
 			_title = ttl.text
 			_desc = dsc.text
 			_thumb = 'https://i.imgur.com/4FYaeCh.png'
-			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, thumb=_thumb)
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_thumb, color="#af6025")
 
 
 if __name__ == "__main__":

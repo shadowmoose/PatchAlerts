@@ -1,6 +1,16 @@
 """ Site object, which handles parsing a site/game for Update posts.  """
 
 
+def all_sites():
+	from sites.battlerite import Battlerite
+	from sites.leagueoflegends import LeagueOfLegends
+	from sites.huntshowdown import HuntShowdown
+	from sites.pathofexile import PathOfExile
+	from sites.warframe import Warframe
+
+	return [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe()]
+
+
 class Site:
 	def __init__(self, name):
 		self.enabled = True  # On by default.

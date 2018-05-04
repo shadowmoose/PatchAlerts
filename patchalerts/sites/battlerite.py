@@ -19,5 +19,5 @@ class Battlerite(Site):
 			_title = link.text
 			_img = img['src']
 			_desc = dsc.text
-			yield Update(game=self.name, update_name=_title, post_url=_url, u_desc=_desc, image=_img)
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, image=_img)
 
