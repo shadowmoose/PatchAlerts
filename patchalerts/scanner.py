@@ -32,7 +32,7 @@ config_backup = config_file + '.backup'
 tmp_config = config_file + '.tmp'
 
 #  error_dir = os.path.join(storage_dir, 'errors/')
-#  os.makedirs(error_dir, exist_ok=True)
+os.makedirs(storage_dir, exist_ok=True)
 
 # =======  LOAD SETTINGS  ========
 config = {'alerts': {}, 'sites': {}}
