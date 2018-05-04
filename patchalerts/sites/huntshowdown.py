@@ -10,9 +10,8 @@ class HuntShowdown(Site):
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://www.huntshowdown.com/news/tagged/news").text, "html.parser")
-		sect = soup.find(attrs={'class':'news-feature'})
-		elems = sect.find_all(attrs={"class": 'col'})
-		for elem in elems:
+		sect = soup.find(attrs={'class': 'news-feature'})
+		for elem in sect.find_all(attrs={"class": 'col'}):
 			link = elem.find('a')
 			img = elem.find('img')
 			dsc = elem.find('p')

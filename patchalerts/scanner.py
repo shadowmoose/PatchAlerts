@@ -94,8 +94,12 @@ for s in sites:
 		continue  # !cover
 	try:
 		print('Scanning %s for updates...' % s.name)
+		_found = False
 		for u in s.scan():
 			updates.append(u)
+			_found = True
+		if not _found:
+			raise Exception('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
 	except Exception:
 		if args.test:
 			raise
