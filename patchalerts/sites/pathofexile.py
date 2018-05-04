@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class PathOfExile(Site):
 	def __init__(self):
-		super().__init__('Path of Exile')
+		super().__init__('Path of Exile', icon='https://i.imgur.com/4FYaeCh.png')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://www.pathofexile.com/forum/view-forum/patch-notes").text, "html.parser")
@@ -19,8 +19,7 @@ class PathOfExile(Site):
 			_url = 'https://www.pathofexile.com' + link["href"]
 			_title = ttl.text
 			_desc = dsc.text
-			_thumb = 'https://i.imgur.com/4FYaeCh.png'
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_thumb, color="#af6025")
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#af6025")
 
 
 if __name__ == "__main__":

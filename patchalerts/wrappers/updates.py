@@ -18,6 +18,9 @@ class Update:
 		self.image = image.strip() if image else None
 		self.thumb = thumb.strip() if thumb else None
 		self.color = int(str(color).replace('#', ''), 16) if color else 123123
+
+		if not self.url or 'http' not in self.url:
+			raise Exception('URL Error: Update URL does not exist, or is relative: [%s]' % self.url)
 		"""
 		self._unsafe = {}
 		for k, v in vars(self).items():
