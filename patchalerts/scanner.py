@@ -28,15 +28,22 @@ sites = site_class.all_sites()
 
 
 config_file = os.path.join(storage_dir, 'config.yml')
-error_dir = os.path.join(storage_dir, 'errors/')
+config_backup = config_file + '.backup'
+tmp_config = config_file + '.tmp'
 
-os.makedirs(error_dir, exist_ok=True)
+#  error_dir = os.path.join(storage_dir, 'errors/')
+#  os.makedirs(error_dir, exist_ok=True)
 
 # =======  LOAD SETTINGS  ========
 config = {'alerts': {}, 'sites': {}}
-if os.path.exists(config_file):
-	with open(config_file, 'r') as f:
-		config = yaml.safe_load(f)
+for cfg in [config_file, config_backup]:
+	try:
+		if os.path.exists(cfg):
+			with open(cfg, 'r') as f:
+				config = yaml.safe_load(f)
+			break
+	except Exception:
+		continue
 
 alert_data = config['alerts']
 site_data = config['sites']
@@ -58,13 +65,23 @@ for s in sites:
 			print('\t+Enabled: %s' % s.enabled)
 	out['sites'][s.formatted_name()] = s.get_save_obj()
 
-with open(config_file, 'w') as yaml_file:
-	yaml_file.write('# Configuration file for PatchAlerts [version %s], built on %s.\n' %
+
+# ACID config file saving. (Copies existing to backup, writes to temp, deletes original, renames temp). Wow.
+if not os.path.exists(config_backup) and os.path.exists(config_file):
+	os.rename(config_file, config_backup)
+with open(tmp_config, 'w') as yaml_file:
+	yaml_file.write('# Configuration file for PatchAlerts [version %s], (re)built on %s.\n' %
 					(version.current_version, datetime.now().isoformat()))
 	yaml.dump(out, yaml_file, default_flow_style=False, indent=4)
+if os.path.exists(config_file):
+	os.remove(config_file)
+os.rename(tmp_config, config_file)
+if os.path.exists(config_backup):
+	os.remove(config_backup)
 # ======= SETTINGS APPLIED ========
 
-db.create(os.path.join(storage_dir, 'db.sqldb'))
+
+db.create(os.path.join(storage_dir, 'db.sqldb'))  # Connect to (or build) the SQLite DB.
 
 if args.update:
 	print('Update complete. Exiting.')
