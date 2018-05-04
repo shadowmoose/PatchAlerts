@@ -16,8 +16,6 @@ class CSGO(Site):
 			_url = link["href"]
 			_title = link.text
 			_desc = elem.find('p', attrs={'class': None}).text
-			if len(_desc) > 1500:
-				_desc = _desc[0:1497] + '...'  # !cover
 			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#6785c2")
 
 

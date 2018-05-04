@@ -21,12 +21,9 @@ class Update:
 
 		if not self.url or 'http' not in self.url:
 			raise Exception('URL Error: Update URL does not exist, or is relative: [%s]' % self.url)
-		"""
-		self._unsafe = {}
-		for k, v in vars(self).items():
-			if v:
-				setattr(self, k, v.encode('ascii', 'replace').decode('ascii'))
-		"""
+
+		if self.description and len(self.description) > 1500:
+			self.description = self.description[0:1497].strip().rstrip('.!?') + '...'  # !cover
 
 	def __str__(self):
 		return "Update: %s" % str(vars(self))  # !cover

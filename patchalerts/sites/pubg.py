@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class PUBG(Site):
 	def __init__(self):
-		super().__init__("PUBG")
+		super().__init__("PUBG", icon='https://i.imgur.com/KmmoncG.png')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://playbattlegrounds.com/news.pu?type_cd=2").text, "html.parser")

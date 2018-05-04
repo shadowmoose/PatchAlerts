@@ -31,9 +31,10 @@ with open(readme, 'r') as r:
 	if tbl:
 		raise Exception("ERROR: Didn't reach end of supported games table. Cannot build.")
 
-table = '| Supported Games |\n| ------------- |\n'
+
+table = '|  | Supported Games |\n| ----- | ------------- |\n'
 for s in site_class.all_sites():
-	table += '| %s |\n' % s.name
+	table += '| <img src="%s" height="48"> | %s |\n' % (s.icon, s.name)
 
 out = out % table.strip()
 

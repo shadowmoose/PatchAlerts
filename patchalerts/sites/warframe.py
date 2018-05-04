@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Warframe(Site):
 	def __init__(self):
-		super().__init__('Warframe')
+		super().__init__('Warframe', icon='http://i.imgur.com/lh5YKoc.png')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://forums.warframe.com/forum/3-pc-update-build-notes/").text, "html.parser")
@@ -17,8 +17,7 @@ class Warframe(Site):
 			_url = link["href"]
 			_title = link.text
 			_desc = link.text
-			_thumb = 'http://i.imgur.com/lh5YKoc.png'
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=_thumb, color='#C0C0C0')
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#C0C0C0')
 
 
 if __name__ == "__main__":
