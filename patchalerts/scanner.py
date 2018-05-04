@@ -90,7 +90,7 @@ if args.update:   # !cover
 
 updates = []
 for s in sites:
-	if not s.enabled:
+	if not s.enabled and not args.test:
 		continue  # !cover
 	try:
 		print('Scanning %s for updates...' % s.name)

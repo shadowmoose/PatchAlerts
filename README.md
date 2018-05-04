@@ -1,7 +1,7 @@
 # PatchAlerts
 [![Build Status](https://travis-ci.org/shadowmoose/PatchAlerts.svg?branch=master)](https://travis-ci.org/shadowmoose/PatchAlerts)[![Coverage Status](https://coveralls.io/repos/github/shadowmoose/PatchAlerts/badge.svg?branch=master)](https://coveralls.io/github/shadowmoose/PatchAlerts?branch=master)
 
-#### Tired of hopping into a game, only to find that you've missed the latest nerf? Want to make sure you and your friends are updated on the meta, or know when that server restart is coming?
+**Tired of hopping into a game, only to find that you've missed the latest nerf? Want to make sure you and your friends are updated on the meta, or know when that server restart is coming?**
 
 This simple tool aims to do all that. When run, it will generate a single configuration file, which you can use to toggle off/on any of the supported games. 
 
@@ -32,5 +32,5 @@ While you're in there, make sure to set ```enabled: True``` for whatever Alerts 
 | Path of Exile |
 | Warframe |
 
-=================
+-----------------
 

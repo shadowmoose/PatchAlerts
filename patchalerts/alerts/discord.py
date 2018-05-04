@@ -14,7 +14,7 @@ class Discord(Alert):
 	def alert(self, upd):
 		p.out('Discord:: Sending %s' % upd)
 		embed = Webhook(self.webhook, color=upd.color)
-		embed.set_author(name=upd.game, icon=upd.thumb, url=upd.url)
+		embed.set_author(name='Patch Notes: %s' % upd.game, icon=upd.thumb, url=upd.url)
 		embed.set_title(title=upd.name, url=upd.url)
 		embed.set_desc(upd.description)
 		#  embed.add_field(name='Test Field', value='Value of the field \U0001f62e')
