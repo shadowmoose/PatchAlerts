@@ -60,7 +60,7 @@ for s in sites:
 
 with open(config_file, 'w') as yaml_file:
 	yaml_file.write('# Configuration file for PatchAlerts [version %s], built on %s.\n' %
-					(version.current_version, datetime.now().isoformat(timespec='seconds')))
+					(version.current_version, datetime.now().isoformat()))
 	yaml.dump(out, yaml_file, default_flow_style=False, indent=4)
 # ======= SETTINGS APPLIED ========
 
