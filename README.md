@@ -31,6 +31,8 @@ While you're in there, make sure to set ```enabled: True``` for whatever Alerts 
 | Hunt: Showdown |
 | Path of Exile |
 | Warframe |
+| PUBG |
+| Fortnite |
+| Hearthstone |
 
------------------
 

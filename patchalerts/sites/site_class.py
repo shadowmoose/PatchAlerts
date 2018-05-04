@@ -9,14 +9,16 @@ def all_sites():
 	from sites.warframe import Warframe
 	from sites.pubg import PUBG
 	from sites.fortnite import Fortnite
+	from sites.hearthstone import Hearthstone
 
-	return [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite()]
+	return [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(), Hearthstone()]
 
 
 class Site:
-	def __init__(self, name):
+	def __init__(self, name, icon=None):
 		self.enabled = False  # Off by default.
 		self.name = name
+		self.icon = icon
 
 	def load(self, values):
 		for k, v in values.items():
