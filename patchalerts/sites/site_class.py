@@ -13,8 +13,9 @@ def all_sites():
 	from sites.csgo import CSGO
 	from sites.overwatch import Overwatch
 
-	return [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
+	_sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
 			Hearthstone(), CSGO(), Overwatch()]
+	return sorted(_sites, key=lambda x: x.name, reverse=False)
 
 
 class Site:
