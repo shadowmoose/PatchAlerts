@@ -4,7 +4,11 @@ class Alert:
 		self.enabled = False
 
 	def load(self, values):
-		self.__dict__.update(**values)
+		for k, v in values.items():
+			if str(k).startswith('_') or k == 'name' or k not in vars(self):
+				continue
+			setattr(self, k, v)
+	#  self.__dict__.update(**values)
 
 	def get_save_obj(self):
 		ret = {}
@@ -17,5 +21,9 @@ class Alert:
 		print(upd)
 		return False
 
+	def formatted_name(self, name=None):
+		""" Returns this object's name, stripped of invalid characters. If provided, it formats that name instead. """
+		name = name if name else self.name
+		return (''.join(s for s in name.lower() if s.isalnum() or s == ' ')).title()
 
 

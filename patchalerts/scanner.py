@@ -3,10 +3,11 @@ import argparse
 import os
 import sys
 import traceback
+from datetime import datetime
 import yaml
 from util import db
 from util import printing as p
-
+from util import version
 from alerts.discord import Discord
 from sites import site_class
 
@@ -14,13 +15,14 @@ from sites import site_class
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
 parser.add_argument("--strict", help="Tells the program to exit on errors.", action="store_true")
 parser.add_argument("--update", help="Update the config file and exit.", action="store_true")
-parser.add_argument("--base_dir", help="Override base directory.", type=str, metavar='')
+parser.add_argument("--base_dir", help="Override base storage directory.", type=str, metavar='')
 args = parser.parse_args()
 
 
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 if args.base_dir:
-	storage_dir = args.base_dir.strip()
+	storage_dir = os.path.abspath(args.base_dir.strip())
+
 alerts = [Discord()]
 sites = site_class.all_sites()
 
@@ -42,22 +44,24 @@ out = {'sites': {}, 'alerts': {}}
 
 for a in alerts:
 	for k, v in alert_data.items():
-		if k.lower() == a.name.lower():
+		if a.formatted_name(k) == a.formatted_name():
 			a.load(v)
 			print('Configured Alert: %s' % a.name)
-			print('\t+%s' % a.enabled)
-	out['alerts'][a.name] = a.get_save_obj()
-
+			print('\t+Enabled: %s' % a.enabled)
+	out['alerts'][a.formatted_name()] = a.get_save_obj()
+print()
 for s in sites:
 	for k, v in site_data.items():
-		if k.lower() == s.name.lower():
+		if s.formatted_name(k) == s.formatted_name():
 			s.load(v)
 			print('Configured Site: %s' % s.name)
-			print('\t+%s' % s.enabled)
-	out['sites'][s.name] = s.get_save_obj()
+			print('\t+Enabled: %s' % s.enabled)
+	out['sites'][s.formatted_name()] = s.get_save_obj()
 
 with open(config_file, 'w') as yaml_file:
-	yaml.dump(out, yaml_file, default_flow_style=False)
+	yaml_file.write('# Configuration file for PatchAlerts [version %s], built on %s.\n' %
+					(version.current_version, datetime.now().isoformat(timespec='seconds')))
+	yaml.dump(out, yaml_file, default_flow_style=False, indent=4)
 # ======= SETTINGS APPLIED ========
 
 db.create(os.path.join(storage_dir, 'db.sqldb'))
