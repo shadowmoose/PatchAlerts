@@ -17,6 +17,7 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 | ----- | ------------- |
 | <img src="https://i.imgur.com/dDIezWP.png" width="48"> | Battlerite |
 | <img src="https://i.imgur.com/wlhfzUT.png" width="48"> | Counter-Strike: Global Offensive |
+| <img src="https://i.imgur.com/h1ExdFI.png" width="48"> | DOTA 2 |
 | <img src="https://i.imgur.com/9Hz2BnX.png" width="48"> | Fortnite |
 | <img src="https://i.imgur.com/fpsVoeK.png" width="48"> | Hearthstone |
 | <img src="https://i.imgur.com/SnQ6cRD.png" width="48"> | Hunt: Showdown |

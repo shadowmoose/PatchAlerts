@@ -16,7 +16,7 @@ class CSGO(Site):
 			_url = link["href"]
 			_title = link.text
 			_desc = elem.find('p', attrs={'class': None}).text
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#6785c2")
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#2f2217")
 
 
 if __name__ == "__main__":
