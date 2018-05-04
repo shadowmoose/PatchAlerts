@@ -13,7 +13,7 @@ from sites import site_class
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
-parser.add_argument("--strict", help="Tells the program to exit on errors.", action="store_true")
+parser.add_argument("--test", help="Tells the program to check all games & exit on errors.", action="store_true")
 parser.add_argument("--update", help="Update the config file and exit.", action="store_true")
 parser.add_argument("--base_dir", help="Override base storage directory.", type=str, metavar='')
 args = parser.parse_args()
@@ -97,7 +97,7 @@ for s in sites:
 		for u in s.scan():
 			updates.append(u)
 	except Exception:
-		if args.strict:
+		if args.test:
 			raise
 		traceback.print_exc()
 
@@ -113,7 +113,7 @@ for u in updates:
 			try:
 				a.alert(u)
 			except Exception:
-				if args.strict:
+				if args.test:
 					raise
 				traceback.print_exc()
 	db.put_completed(u)

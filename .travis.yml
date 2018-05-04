@@ -8,7 +8,7 @@ install:
 - pip install coveralls
 script:
 - python ./patchalerts/scanner.py --update
-- coverage run ./patchalerts/scanner.py --strict
+- coverage run ./patchalerts/scanner.py --test
 after_script:
 - COVERALLS_PARALLEL=true coveralls
 notifications:
