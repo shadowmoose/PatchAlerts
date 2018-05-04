@@ -2,6 +2,7 @@ from wrappers.discord_hooks import Webhook
 from alerts.alert_class import Alert
 from util import printing as p
 from util import version
+import time
 
 
 class Discord(Alert):
@@ -22,4 +23,5 @@ class Discord(Alert):
 		embed.set_image(upd.image)
 		embed.set_footer(text='PatchAlerts [v:%s].' % version.current_version, icon=self._icon, ts=True)
 		embed.post()
+		time.sleep(2)
 		return True
