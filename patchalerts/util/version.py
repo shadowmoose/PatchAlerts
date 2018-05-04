@@ -35,7 +35,7 @@ def get_version():
 	v = _git_version()
 	if v:
 		return v
-	return backup_version
+	return backup_version  # !cover
 
 
 # noinspection PyRedeclaration

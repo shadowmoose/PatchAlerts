@@ -6,7 +6,7 @@ class Alert:
 	def load(self, values):
 		for k, v in values.items():
 			if str(k).startswith('_') or k == 'name' or k not in vars(self):
-				continue
+				continue  # !cover
 			setattr(self, k, v)
 	#  self.__dict__.update(**values)
 

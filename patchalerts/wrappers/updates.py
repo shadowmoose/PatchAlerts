@@ -26,4 +26,4 @@ class Update:
 		"""
 
 	def __str__(self):
-		return "Update: %s" % str(vars(self))
+		return "Update: %s" % str(vars(self))  # !cover
