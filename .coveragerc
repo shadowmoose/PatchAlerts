@@ -2,11 +2,14 @@
 [run]
 branch = False
 source = .
+omit =
+    ./patchalerts/wrappers/discord_hooks.py
 [report]
 exclude_lines =
     pragma: no cover
     !cover
     def __repr__
+    def alert
     except
     raise
     if __name__ ==

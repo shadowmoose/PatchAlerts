@@ -10,7 +10,7 @@ def create(file):
 	global conn
 	build = file == ':memory:' or not os.path.isfile(file)
 	conn = sqlite3.connect(file, check_same_thread=False)
-	if build:
+	if build:  # !cover
 		with closing(conn.cursor()) as cur:
 			cur.execute('''CREATE TABLE updates (
 				game text, update_name text, url text, push_time numeric

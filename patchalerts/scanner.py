@@ -21,7 +21,7 @@ args = parser.parse_args()
 
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 if args.base_dir:
-	storage_dir = os.path.abspath(args.base_dir.strip())
+	storage_dir = os.path.abspath(args.base_dir.strip())  # !cover
 
 alerts = [Discord()]
 sites = site_class.all_sites()
@@ -74,7 +74,7 @@ with open(tmp_config, 'w') as yaml_file:
 					(version.current_version, datetime.now().isoformat()))
 	yaml.dump(out, yaml_file, default_flow_style=False, indent=4)
 if os.path.exists(config_file):
-	os.remove(config_file)
+	os.remove(config_file)  # !cover
 os.rename(tmp_config, config_file)
 if os.path.exists(config_backup):
 	os.remove(config_backup)
@@ -83,7 +83,7 @@ if os.path.exists(config_backup):
 
 db.create(os.path.join(storage_dir, 'db.sqldb'))  # Connect to (or build) the SQLite DB.
 
-if args.update:
+if args.update:   # !cover
 	print('Update complete. Exiting.')
 	sys.exit(0)
 
@@ -91,7 +91,7 @@ if args.update:
 updates = []
 for s in sites:
 	if not s.enabled:
-		continue
+		continue  # !cover
 	try:
 		print('Scanning %s for updates...' % s.name)
 		for u in s.scan():
@@ -104,12 +104,12 @@ for s in sites:
 print('Found %s updates.' % len(updates))
 
 for u in updates:
-	if db.check_completed(u):
+	if db.check_completed(u):  # !cover
 		p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
 		continue
 	p.out('\tFound update: [%s] %s' % (u.game, u.name))
 	for a in alerts:
-		if a.enabled:
+		if a.enabled:  # !cover
 			try:
 				a.alert(u)
 			except Exception:
