@@ -11,9 +11,10 @@ def all_sites():
 	from sites.fortnite import Fortnite
 	from sites.hearthstone import Hearthstone
 	from sites.csgo import CSGO
+	from sites.overwatch import Overwatch
 
 	return [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
-			Hearthstone(), CSGO()]
+			Hearthstone(), CSGO(), Overwatch()]
 
 
 class Site:
