@@ -26,16 +26,16 @@ While you're in there, make sure to set ```enabled: True``` for whatever Alerts 
 
 |  | Supported Games |
 | ----- | ------------- |
-| <img src="https://i.imgur.com/dDIezWP.png" height="48"> | Battlerite |
-| <img src="https://i.imgur.com/fyMlBLW.png" height="48"> | League of Legends |
-| <img src="https://i.imgur.com/SnQ6cRD.png" height="48"> | Hunt: Showdown |
-| <img src="https://i.imgur.com/4FYaeCh.png" height="48"> | Path of Exile |
-| <img src="http://i.imgur.com/lh5YKoc.png" height="48"> | Warframe |
-| <img src="https://i.imgur.com/KmmoncG.png" height="48"> | PUBG |
-| <img src="https://i.imgur.com/9Hz2BnX.png" height="48"> | Fortnite |
-| <img src="https://i.imgur.com/fpsVoeK.png" height="48"> | Hearthstone |
-| <img src="https://i.imgur.com/wlhfzUT.png" height="48"> | Counter-Strike: Global Offensive |
-| <img src="https://i.imgur.com/Wp2Xlvw.png" height="48"> | Overwatch |
+| <img src="https://i.imgur.com/dDIezWP.png" width="48"> | Battlerite |
+| <img src="https://i.imgur.com/fyMlBLW.png" width="48"> | League of Legends |
+| <img src="https://i.imgur.com/SnQ6cRD.png" width="48"> | Hunt: Showdown |
+| <img src="https://i.imgur.com/4FYaeCh.png" width="48"> | Path of Exile |
+| <img src="http://i.imgur.com/lh5YKoc.png" width="48"> | Warframe |
+| <img src="https://i.imgur.com/KmmoncG.png" width="48"> | PUBG |
+| <img src="https://i.imgur.com/9Hz2BnX.png" width="48"> | Fortnite |
+| <img src="https://i.imgur.com/fpsVoeK.png" width="48"> | Hearthstone |
+| <img src="https://i.imgur.com/wlhfzUT.png" width="48"> | Counter-Strike: Global Offensive |
+| <img src="https://i.imgur.com/Wp2Xlvw.png" width="48"> | Overwatch |
 
 
 

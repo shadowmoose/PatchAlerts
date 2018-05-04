@@ -34,7 +34,7 @@ with open(readme, 'r') as r:
 
 table = '|  | Supported Games |\n| ----- | ------------- |\n'
 for s in site_class.all_sites():
-	table += '| <img src="%s" height="48"> | %s |\n' % (s.icon, s.name)
+	table += '| <img src="%s" width="48"> | %s |\n' % (s.icon, s.name)
 
 out = out % table.strip()
 
