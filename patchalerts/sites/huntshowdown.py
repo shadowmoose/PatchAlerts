@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class HuntShowdown(Site):
 	def __init__(self):
-		super().__init__('Hunt: Showdown', icon='https://i.imgur.com/SnQ6cRD.png')
+		super().__init__('Hunt: Showdown', icon='https://i.imgur.com/SnQ6cRD.png', homepage='https://www.huntshowdown.com/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://www.huntshowdown.com/news/tagged/news").text, "html.parser")

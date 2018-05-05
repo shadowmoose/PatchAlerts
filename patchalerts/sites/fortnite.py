@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Fortnite(Site):
 	def __init__(self):
-		super().__init__("Fortnite", icon='https://i.imgur.com/9Hz2BnX.png')
+		super().__init__("Fortnite", icon='https://i.imgur.com/9Hz2BnX.png', homepage='https://www.epicgames.com/fortnite/')
 
 	def scan(self):
 		resp = requests.get("https://www.epicgames.com/fortnite/en-US/patch-notes/")  # Follow redirect to latest.

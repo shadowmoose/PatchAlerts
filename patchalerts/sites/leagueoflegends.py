@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class LeagueOfLegends(Site):
 	def __init__(self):
-		super().__init__('League of Legends', icon='https://i.imgur.com/fyMlBLW.png')
+		super().__init__('League of Legends', icon='https://i.imgur.com/fyMlBLW.png', homepage='https://leagueoflegends.com/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://na.leagueoflegends.com/en/news/game-updates/patch").text, "html.parser")

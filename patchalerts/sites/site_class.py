@@ -20,10 +20,11 @@ def all_sites():
 
 
 class Site:
-	def __init__(self, name, icon=None):
+	def __init__(self, name, icon=None, homepage=None):
 		self.enabled = False  # Off by default.
 		self.name = name
 		self.icon = icon
+		self._homepage = homepage
 
 	def load(self, values):
 		for k, v in values.items():
@@ -47,3 +48,7 @@ class Site:
 		""" Returns this object's name, stripped of invalid characters. If provided, it formats that name instead. """
 		name = name if name else self.name
 		return (''.join(s for s in name.lower() if s.isalnum() or s == ' ')).title()
+
+	def get_homepage(self):
+		return self._homepage
+

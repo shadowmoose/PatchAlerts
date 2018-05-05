@@ -15,17 +15,17 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 
 |  | Supported Games |
 | ----- | ------------- |
-| <img src="https://i.imgur.com/dDIezWP.png" width="48"> | Battlerite |
-| <img src="https://i.imgur.com/wlhfzUT.png" width="48"> | Counter-Strike: Global Offensive |
-| <img src="https://i.imgur.com/h1ExdFI.png" width="48"> | DOTA 2 |
-| <img src="https://i.imgur.com/9Hz2BnX.png" width="48"> | Fortnite |
-| <img src="https://i.imgur.com/fpsVoeK.png" width="48"> | Hearthstone |
-| <img src="https://i.imgur.com/SnQ6cRD.png" width="48"> | Hunt: Showdown |
-| <img src="https://i.imgur.com/fyMlBLW.png" width="48"> | League of Legends |
-| <img src="https://i.imgur.com/Wp2Xlvw.png" width="48"> | Overwatch |
-| <img src="https://i.imgur.com/KmmoncG.png" width="48"> | PUBG |
-| <img src="https://i.imgur.com/4FYaeCh.png" width="48"> | Path of Exile |
-| <img src="http://i.imgur.com/lh5YKoc.png" width="48"> | Warframe |
+| [<img src="https://i.imgur.com/dDIezWP.png" width="48">](https://www.battlerite.com/) | [Battlerite](https://www.battlerite.com/) |
+| [<img src="https://i.imgur.com/wlhfzUT.png" width="48">](http://blog.counter-strike.net/) | [CS:GO](http://blog.counter-strike.net/) |
+| [<img src="https://i.imgur.com/h1ExdFI.png" width="48">](http://www.dota2.com) | [DOTA 2](http://www.dota2.com) |
+| [<img src="https://i.imgur.com/9Hz2BnX.png" width="48">](https://www.epicgames.com/fortnite/) | [Fortnite](https://www.epicgames.com/fortnite/) |
+| [<img src="https://i.imgur.com/fpsVoeK.png" width="48">](https://playhearthstone.com/) | [Hearthstone](https://playhearthstone.com/) |
+| [<img src="https://i.imgur.com/SnQ6cRD.png" width="48">](https://www.huntshowdown.com/) | [Hunt: Showdown](https://www.huntshowdown.com/) |
+| [<img src="https://i.imgur.com/fyMlBLW.png" width="48">](https://leagueoflegends.com/) | [League of Legends](https://leagueoflegends.com/) |
+| [<img src="https://i.imgur.com/Wp2Xlvw.png" width="48">](https://playoverwatch.com/) | [Overwatch](https://playoverwatch.com/) |
+| [<img src="https://i.imgur.com/KmmoncG.png" width="48">](https://playbattlegrounds.com/) | [PUBG](https://playbattlegrounds.com/) |
+| [<img src="https://i.imgur.com/4FYaeCh.png" width="48">](https://pathofexile.com) | [Path of Exile](https://pathofexile.com) |
+| [<img src="http://i.imgur.com/lh5YKoc.png" width="48">](https://www.warframe.com/) | [Warframe](https://www.warframe.com/) |
 
 *Depending on my free time and interest, I may expand the list of supported games or alert methods. If you have one you'd like added, please open a request.*
 

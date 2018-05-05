@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class CSGO(Site):
 	def __init__(self):
-		super().__init__('Counter-Strike: Global Offensive', icon='https://i.imgur.com/wlhfzUT.png')
+		super().__init__('CS:GO', icon='https://i.imgur.com/wlhfzUT.png', homepage='http://blog.counter-strike.net/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("http://blog.counter-strike.net/index.php/category/updates/").text, "html.parser")

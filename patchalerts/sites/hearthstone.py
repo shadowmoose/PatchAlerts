@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Hearthstone(Site):
 	def __init__(self):
-		super().__init__('Hearthstone', icon='https://i.imgur.com/fpsVoeK.png')
+		super().__init__('Hearthstone', icon='https://i.imgur.com/fpsVoeK.png', homepage='https://playhearthstone.com/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://us.battle.net/forums/en/hearthstone/22814011/").text, "html.parser")

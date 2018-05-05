@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Overwatch(Site):
 	def __init__(self):
-		super().__init__("Overwatch", 'https://i.imgur.com/Wp2Xlvw.png')
+		super().__init__("Overwatch", 'https://i.imgur.com/Wp2Xlvw.png', homepage='https://playoverwatch.com/')
 
 	def scan(self):
 		resp = requests.get("https://playoverwatch.com/en-us/game/patch-notes/pc/")

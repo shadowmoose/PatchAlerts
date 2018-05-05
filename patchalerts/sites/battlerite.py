@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Battlerite(Site):
 	def __init__(self):
-		super().__init__('Battlerite', icon='https://i.imgur.com/dDIezWP.png')
+		super().__init__('Battlerite', icon='https://i.imgur.com/dDIezWP.png', homepage='https://www.battlerite.com/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://blog.battlerite.com/category/updates/").text, "html.parser")

@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class DOTA(Site):
 	def __init__(self):
-		super().__init__("DOTA 2", 'https://i.imgur.com/h1ExdFI.png')
+		super().__init__("DOTA 2", 'https://i.imgur.com/h1ExdFI.png', homepage='http://www.dota2.com')
 
 	def scan(self):
 		found = []  # Gotta dedupe these, because the devs post everything twice.

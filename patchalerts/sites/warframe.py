@@ -6,7 +6,7 @@ from sites.site_class import Site
 
 class Warframe(Site):
 	def __init__(self):
-		super().__init__('Warframe', icon='http://i.imgur.com/lh5YKoc.png')
+		super().__init__('Warframe', icon='http://i.imgur.com/lh5YKoc.png', homepage='https://www.warframe.com/')
 
 	def scan(self):
 		soup = BeautifulSoup(requests.get("https://forums.warframe.com/forum/3-pc-update-build-notes/").text, "html.parser")
