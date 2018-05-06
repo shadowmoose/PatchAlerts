@@ -18,6 +18,7 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 | [<img src="https://i.imgur.com/dDIezWP.png" width="48">](https://www.battlerite.com/) | [Battlerite](https://www.battlerite.com/) |
 | [<img src="https://i.imgur.com/wlhfzUT.png" width="48">](http://blog.counter-strike.net/) | [CS:GO](http://blog.counter-strike.net/) |
 | [<img src="https://i.imgur.com/h1ExdFI.png" width="48">](http://www.dota2.com) | [DOTA 2](http://www.dota2.com) |
+| [<img src="https://i.imgur.com/hL9PabV.png" width="48">](http://deadbydaylight.com) | [Dead By Daylight](http://deadbydaylight.com) |
 | [<img src="https://i.imgur.com/C9cNY2O.png" width="48">](https://us.diablo3.com/en/) | [Diablo 3](https://us.diablo3.com/en/) |
 | [<img src="https://i.imgur.com/9Hz2BnX.png" width="48">](https://www.epicgames.com/fortnite/) | [Fortnite](https://www.epicgames.com/fortnite/) |
 | [<img src="https://i.imgur.com/fpsVoeK.png" width="48">](https://playhearthstone.com/) | [Hearthstone](https://playhearthstone.com/) |
