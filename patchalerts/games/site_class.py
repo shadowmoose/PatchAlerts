@@ -2,20 +2,21 @@
 
 
 def all_sites():
-	from sites.battlerite import Battlerite
-	from sites.leagueoflegends import LeagueOfLegends
-	from sites.huntshowdown import HuntShowdown
-	from sites.pathofexile import PathOfExile
-	from sites.warframe import Warframe
-	from sites.pubg import PUBG
-	from sites.fortnite import Fortnite
-	from sites.hearthstone import Hearthstone
-	from sites.csgo import CSGO
-	from sites.overwatch import Overwatch
-	from sites.dota import DOTA
+	from games.battlerite import Battlerite
+	from games.leagueoflegends import LeagueOfLegends
+	from games.huntshowdown import HuntShowdown
+	from games.pathofexile import PathOfExile
+	from games.warframe import Warframe
+	from games.pubg import PUBG
+	from games.fortnite import Fortnite
+	from games.hearthstone import Hearthstone
+	from games.csgo import CSGO
+	from games.overwatch import Overwatch
+	from games.dota import DOTA
+	from games.diablo import Diablo3
 
 	_sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
-			Hearthstone(), CSGO(), Overwatch(), DOTA()]
+			Hearthstone(), CSGO(), Overwatch(), DOTA(), Diablo3()]
 	return sorted(_sites, key=lambda x: x.name, reverse=False)
 
 
