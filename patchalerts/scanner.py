@@ -9,7 +9,7 @@ from util import db
 from util import printing as p
 from util import version
 from alerts.discord import Discord
-from sites import site_class
+from games import site_class
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
@@ -35,7 +35,7 @@ tmp_config = config_file + '.tmp'
 os.makedirs(storage_dir, exist_ok=True)
 
 # =======  LOAD SETTINGS  ========
-config = {'alerts': {}, 'sites': {}}
+config = {'alerts': {}, 'games': {}}
 for cfg in [config_file, config_backup]:
 	try:
 		if os.path.exists(cfg):
@@ -46,8 +46,8 @@ for cfg in [config_file, config_backup]:
 		continue
 
 alert_data = config['alerts']
-site_data = config['sites']
-out = {'sites': {}, 'alerts': {}}
+site_data = config['games']
+out = {'games': {}, 'alerts': {}}
 
 for a in alerts:
 	for k, v in alert_data.items():
@@ -63,7 +63,7 @@ for s in sites:
 			s.load(v)
 			print('Configured Site: %s' % s.name)
 			print('\t+Enabled: %s' % s.enabled)
-	out['sites'][s.formatted_name()] = s.get_save_obj()
+	out['games'][s.formatted_name()] = s.get_save_obj()
 
 
 # ACID config file saving. (Copies existing to backup, writes to temp, deletes original, renames temp). Wow.

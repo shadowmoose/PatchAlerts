@@ -4,7 +4,7 @@
 """
 
 import os
-from sites import site_class
+from games import site_class
 
 from util import version
 

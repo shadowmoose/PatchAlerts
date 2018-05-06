@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from wrappers.update import Update
-from sites.site_class import Site
+from games.site_class import Site
 
 
 class DOTA(Site):
