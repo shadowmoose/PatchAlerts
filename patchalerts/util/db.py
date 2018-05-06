@@ -19,9 +19,11 @@ def create(file):
 	print('Connected to DB.')
 
 
-def check_completed(update):
+def check_completed(update=None, raw_url=None):
+	if update:
+		raw_url = update.url
 	with closing(conn.cursor()) as cur:
-		cur.execute('SELECT game, url FROM updates WHERE url=:ur', {'ur': update.url})
+		cur.execute('SELECT game, url FROM updates WHERE url=:ur', {'ur': raw_url})
 		return cur.fetchone()
 
 
