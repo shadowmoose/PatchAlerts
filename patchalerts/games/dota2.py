@@ -4,7 +4,7 @@ from wrappers.update import Update
 from games.site_class import Site
 
 
-class DOTA(Site):
+class DOTA2(Site):
 	def __init__(self):
 		super().__init__("DOTA 2", 'https://i.imgur.com/h1ExdFI.png', homepage='http://www.dota2.com')
 
@@ -26,6 +26,6 @@ class DOTA(Site):
 
 
 if __name__ == "__main__":
-	lol = DOTA()
+	lol = DOTA2()
 	for u in lol.scan():
 		print(u)
