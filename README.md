@@ -32,6 +32,7 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 | [<img src="https://i.imgur.com/QTqit7h.png" width="48">](https://runescape.com/) | [Runescape](https://runescape.com/) |
 | [<img src="http://i.imgur.com/lh5YKoc.png" width="48">](https://www.warframe.com/) | [Warframe](https://www.warframe.com/) |
 | [<img src="https://i.imgur.com/eyYwEqS.png" width="48">](https://worldoftanks.com) | [World of Tanks](https://worldoftanks.com) |
+| [<img src="https://i.imgur.com/zzpQhkw.png" width="48">](https://worldofwarcraft.com/) | [World of Warcraft](https://worldofwarcraft.com/) |
 
 *Depending on my free time and interest, I may expand the list of supported games or alert methods. If you have one you'd like added, please open a request.*
 
