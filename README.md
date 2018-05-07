@@ -11,7 +11,7 @@ It will then scan the patch notes for those games. If it finds a new update, it 
 -----------------
 ## Supported Games:
 
-PatchAlerts supports most of the largest games out there! Here's a full list:
+PatchAlerts supports quite a few popular games! Here's a full list:
 
 |  | Supported Games | | |
 | ----- | ------------- |----- | ------------- |
