@@ -22,7 +22,7 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 | [<img src="https://i.imgur.com/C9cNY2O.png" width="48">](https://us.diablo3.com/en/) | [Diablo 3](https://us.diablo3.com/en/) |
 | [<img src="https://i.imgur.com/9Hz2BnX.png" width="48">](https://www.epicgames.com/fortnite/) | [Fortnite](https://www.epicgames.com/fortnite/) |
 | [<img src="https://i.imgur.com/fpsVoeK.png" width="48">](https://playhearthstone.com/) | [Hearthstone](https://playhearthstone.com/) |
-| [<img src="https://i.imgur.com/BAwhT5u.png" width="48">](https://heroesofthestorm.com) | [Heros of the Storm](https://heroesofthestorm.com) |
+| [<img src="https://i.imgur.com/BAwhT5u.png" width="48">](https://heroesofthestorm.com) | [Heroes of the Storm](https://heroesofthestorm.com) |
 | [<img src="https://i.imgur.com/SnQ6cRD.png" width="48">](https://www.huntshowdown.com/) | [Hunt: Showdown](https://www.huntshowdown.com/) |
 | [<img src="https://i.imgur.com/fyMlBLW.png" width="48">](https://leagueoflegends.com/) | [League of Legends](https://leagueoflegends.com/) |
 | [<img src="https://i.imgur.com/Wp2Xlvw.png" width="48">](https://playoverwatch.com/) | [Overwatch](https://playoverwatch.com/) |
