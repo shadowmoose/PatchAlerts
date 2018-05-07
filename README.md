@@ -13,27 +13,18 @@ It will then scan the patch notes for those games. If it finds a new update, it 
 
 PatchAlerts supports most of the largest games out there! Here's a full list:
 
-|  | Supported Games |
-| ----- | ------------- |
-| [<img src="https://i.imgur.com/dDIezWP.png" width="48">](https://www.battlerite.com/) | [Battlerite](https://www.battlerite.com/) |
-| [<img src="https://i.imgur.com/wlhfzUT.png" width="48">](http://blog.counter-strike.net/) | [CS:GO](http://blog.counter-strike.net/) |
-| [<img src="https://i.imgur.com/h1ExdFI.png" width="48">](http://www.dota2.com) | [DOTA 2](http://www.dota2.com) |
-| [<img src="https://i.imgur.com/hL9PabV.png" width="48">](http://deadbydaylight.com) | [Dead By Daylight](http://deadbydaylight.com) |
-| [<img src="https://i.imgur.com/C9cNY2O.png" width="48">](https://us.diablo3.com/en/) | [Diablo 3](https://us.diablo3.com/en/) |
-| [<img src="https://i.imgur.com/9Hz2BnX.png" width="48">](https://www.epicgames.com/fortnite/) | [Fortnite](https://www.epicgames.com/fortnite/) |
-| [<img src="https://i.imgur.com/MDpiySe.png" width="48">](https://www.rockstargames.com/V/) | [Grand Theft Auto 5](https://www.rockstargames.com/V/) |
-| [<img src="https://i.imgur.com/fpsVoeK.png" width="48">](https://playhearthstone.com/) | [Hearthstone](https://playhearthstone.com/) |
-| [<img src="https://i.imgur.com/BAwhT5u.png" width="48">](https://heroesofthestorm.com) | [Heroes of the Storm](https://heroesofthestorm.com) |
-| [<img src="https://i.imgur.com/SnQ6cRD.png" width="48">](https://www.huntshowdown.com/) | [Hunt: Showdown](https://www.huntshowdown.com/) |
-| [<img src="https://i.imgur.com/fyMlBLW.png" width="48">](https://leagueoflegends.com/) | [League of Legends](https://leagueoflegends.com/) |
-| [<img src="https://i.imgur.com/Wp2Xlvw.png" width="48">](https://playoverwatch.com/) | [Overwatch](https://playoverwatch.com/) |
-| [<img src="https://i.imgur.com/KmmoncG.png" width="48">](https://playbattlegrounds.com/) | [PUBG](https://playbattlegrounds.com/) |
-| [<img src="https://i.imgur.com/4FYaeCh.png" width="48">](https://pathofexile.com) | [Path of Exile](https://pathofexile.com) |
-| [<img src="https://i.imgur.com/FdrriRp.png" width="48">](https://rainbow6.ubisoft.com/siege/en-us/) | [Rainbow Six Siege](https://rainbow6.ubisoft.com/siege/en-us/) |
-| [<img src="https://i.imgur.com/QTqit7h.png" width="48">](https://runescape.com/) | [Runescape](https://runescape.com/) |
-| [<img src="http://i.imgur.com/lh5YKoc.png" width="48">](https://www.warframe.com/) | [Warframe](https://www.warframe.com/) |
-| [<img src="https://i.imgur.com/eyYwEqS.png" width="48">](https://worldoftanks.com) | [World of Tanks](https://worldoftanks.com) |
-| [<img src="https://i.imgur.com/zzpQhkw.png" width="48">](https://worldofwarcraft.com/) | [World of Warcraft](https://worldofwarcraft.com/) |
+|  | Supported Games | | |
+| ----- | ------------- |----- | ------------- |
+| [<img src="https://i.imgur.com/dDIezWP.png" width="48">](https://www.battlerite.com/) | [Battlerite](https://www.battlerite.com/) | [<img src="https://i.imgur.com/wlhfzUT.png" width="48">](http://blog.counter-strike.net/) | [CS:GO](http://blog.counter-strike.net/) |
+| [<img src="https://i.imgur.com/h1ExdFI.png" width="48">](http://www.dota2.com) | [DOTA 2](http://www.dota2.com) | [<img src="https://i.imgur.com/hL9PabV.png" width="48">](http://deadbydaylight.com) | [Dead By Daylight](http://deadbydaylight.com) |
+| [<img src="https://i.imgur.com/C9cNY2O.png" width="48">](https://us.diablo3.com/en/) | [Diablo 3](https://us.diablo3.com/en/) | [<img src="https://i.imgur.com/9Hz2BnX.png" width="48">](https://www.epicgames.com/fortnite/) | [Fortnite](https://www.epicgames.com/fortnite/) |
+| [<img src="https://i.imgur.com/MDpiySe.png" width="48">](https://www.rockstargames.com/V/) | [Grand Theft Auto 5](https://www.rockstargames.com/V/) | [<img src="https://i.imgur.com/fpsVoeK.png" width="48">](https://playhearthstone.com/) | [Hearthstone](https://playhearthstone.com/) |
+| [<img src="https://i.imgur.com/BAwhT5u.png" width="48">](https://heroesofthestorm.com) | [Heroes of the Storm](https://heroesofthestorm.com) | [<img src="https://i.imgur.com/SnQ6cRD.png" width="48">](https://www.huntshowdown.com/) | [Hunt: Showdown](https://www.huntshowdown.com/) |
+| [<img src="https://i.imgur.com/fyMlBLW.png" width="48">](https://leagueoflegends.com/) | [League of Legends](https://leagueoflegends.com/) | [<img src="https://i.imgur.com/Wp2Xlvw.png" width="48">](https://playoverwatch.com/) | [Overwatch](https://playoverwatch.com/) |
+| [<img src="https://i.imgur.com/KmmoncG.png" width="48">](https://playbattlegrounds.com/) | [PUBG](https://playbattlegrounds.com/) | [<img src="https://i.imgur.com/4FYaeCh.png" width="48">](https://pathofexile.com) | [Path of Exile](https://pathofexile.com) |
+| [<img src="https://i.imgur.com/FdrriRp.png" width="48">](https://rainbow6.ubisoft.com/siege/en-us/) | [Rainbow Six Siege](https://rainbow6.ubisoft.com/siege/en-us/) | [<img src="https://i.imgur.com/QTqit7h.png" width="48">](https://runescape.com/) | [Runescape](https://runescape.com/) |
+| [<img src="http://i.imgur.com/lh5YKoc.png" width="48">](https://www.warframe.com/) | [Warframe](https://www.warframe.com/) | [<img src="https://i.imgur.com/eyYwEqS.png" width="48">](https://worldoftanks.com) | [World of Tanks](https://worldoftanks.com) |
+| [<img src="https://i.imgur.com/zzpQhkw.png" width="48">](https://worldofwarcraft.com/) | [World of Warcraft](https://worldofwarcraft.com/) |  |  |
 
 *Depending on my free time and interest, I may expand the list of supported games or alert methods. If you have one you'd like added, please open a request.*
 

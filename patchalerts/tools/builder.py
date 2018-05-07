@@ -32,9 +32,16 @@ with open(readme, 'r') as r:
 		raise Exception("ERROR: Didn't reach end of supported games table. Cannot build.")
 
 
-table = '|  | Supported Games |\n| ----- | ------------- |\n'
-for s in games.all_games():
-	table += '| [<img src="%s" width="48">](%s) | [%s](%s) |\n' % (s.icon, s.get_homepage(), s.name, s.get_homepage())
+table = '|  | Supported Games | | |\n| ----- | ------------- |----- | ------------- |\n'
+it = iter(games.all_games())
+for s in it:
+	table += '| [<img src="%s" width="48">](%s) | [%s](%s) |' % (s.icon, s.get_homepage(), s.name, s.get_homepage())
+	try:
+		n = next(it)
+		table += ' [<img src="%s" width="48">](%s) | [%s](%s) |' % (n.icon, n.get_homepage(), n.name, n.get_homepage())
+	except StopIteration:
+		table += '  |  |'
+	table += '\n'
 
 out = out % table.strip()
 
