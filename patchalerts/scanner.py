@@ -9,7 +9,7 @@ from util import db
 from util import printing as p
 from util import version
 from alerts.discord import Discord
-from games import site_class
+from games import base_class
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
@@ -24,7 +24,7 @@ if args.base_dir:
 	storage_dir = os.path.abspath(args.base_dir.strip())  # !cover
 
 alerts = [Discord()]
-sites = site_class.all_sites()
+sites = base_class.all_sites()
 
 
 config_file = os.path.join(storage_dir, 'config.yml')

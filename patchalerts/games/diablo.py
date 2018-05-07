@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from wrappers.update import Update
-from games.site_class import Site
+from games.base_class import Site
 
 
 class Diablo3(Site):

@@ -53,5 +53,5 @@ class Site:
 		return (''.join(s for s in name.lower() if s.isalnum() or s == ' ')).title()
 
 	def get_homepage(self):
-		return self._homepage
+		return self._homepage  # !ciover
 
