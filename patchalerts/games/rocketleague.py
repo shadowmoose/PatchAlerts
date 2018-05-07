@@ -6,7 +6,7 @@ from games.base_class import Site
 
 class RocketLeague(Site):
 	def __init__(self):
-		super().__init__('Rocket League', icon='https://i.imgur.com/oQu3wKA.png', homepage='https://www.rocketleague.com')
+		super().__init__('Rocket League', icon='https://i.imgur.com/0ikRetf.png', homepage='https://www.rocketleague.com')
 
 	def scan(self):
 		soup = BeautifulSoup(
