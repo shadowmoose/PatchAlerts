@@ -16,11 +16,13 @@ from games.rainbowsix import RainbowSix
 from games.worldoftanks import WorldOfTanks
 from games.heroesofthestorm import HOTS
 from games.worldofwarcraft import WorldOfWarcraft
+from games.gta import GTA5
+
 
 _all_games = [
 	Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
 	Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix(), WorldOfTanks(),
-	HOTS(), WorldOfWarcraft()
+	HOTS(), WorldOfWarcraft(), GTA5()
 ]
 
 
