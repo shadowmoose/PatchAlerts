@@ -17,9 +17,10 @@ def all_sites():
 	from games.deadbydaylight import DBD
 	from games.runescape import Runescape
 	from games.rainbowsix import RainbowSix
+	from games.worldoftanks import WorldOfTanks
 
 	_sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
-			Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix()]
+			Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix(), WorldOfTanks()]
 	return sorted(_sites, key=lambda x: x.name, reverse=False)
 
 
