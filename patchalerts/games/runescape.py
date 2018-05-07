@@ -13,8 +13,9 @@ class Runescape(Site):
 			_title = p['title']
 			_url = p['link']
 			_desc = p['summary']
-			#  _img = p['summaryImageLink']
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#f8ca40')
+			_img = p['summaryImageLink']
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#f8ca40',
+						image=_img)
 
 
 if __name__ == "__main__":
