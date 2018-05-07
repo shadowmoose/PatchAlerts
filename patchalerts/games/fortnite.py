@@ -15,7 +15,8 @@ class Fortnite(Site):
 		_desc = soup.find(attrs={'property': "og:description"})['content']
 		_img = soup.find(attrs={'property': "og:image"})['content']
 		_url = resp.url
-		yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, image=_img, color="#1c237a")
+		yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, image=_img, thumb=self.icon,
+					color="#1c237a")
 
 
 if __name__ == "__main__":

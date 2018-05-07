@@ -21,7 +21,8 @@ class PUBG(Site):
 			_title = ttl.text
 			_img = img['src']
 			_desc = dsc.text + '...'
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, image=_img, color="#bf1866")
+			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, image=_img,
+						color="#bf1866")
 
 
 if __name__ == "__main__":
