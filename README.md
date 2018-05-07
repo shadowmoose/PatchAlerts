@@ -27,6 +27,7 @@ PatchAlerts supports most of the largest games out there! Here's a full list:
 | [<img src="https://i.imgur.com/Wp2Xlvw.png" width="48">](https://playoverwatch.com/) | [Overwatch](https://playoverwatch.com/) |
 | [<img src="https://i.imgur.com/KmmoncG.png" width="48">](https://playbattlegrounds.com/) | [PUBG](https://playbattlegrounds.com/) |
 | [<img src="https://i.imgur.com/4FYaeCh.png" width="48">](https://pathofexile.com) | [Path of Exile](https://pathofexile.com) |
+| [<img src="https://i.imgur.com/FdrriRp.png" width="48">](https://rainbow6.ubisoft.com/siege/en-us/) | [Rainbow Six Siege](https://rainbow6.ubisoft.com/siege/en-us/) |
 | [<img src="https://i.imgur.com/QTqit7h.png" width="48">](https://runescape.com/) | [Runescape](https://runescape.com/) |
 | [<img src="http://i.imgur.com/lh5YKoc.png" width="48">](https://www.warframe.com/) | [Warframe](https://www.warframe.com/) |
 

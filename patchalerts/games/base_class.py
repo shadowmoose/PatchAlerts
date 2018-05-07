@@ -16,9 +16,10 @@ def all_sites():
 	from games.diablo import Diablo3
 	from games.deadbydaylight import DBD
 	from games.runescape import Runescape
+	from games.rainbowsix import RainbowSix
 
 	_sites = [Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
-			Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape()]
+			Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix()]
 	return sorted(_sites, key=lambda x: x.name, reverse=False)
 
 
@@ -53,5 +54,5 @@ class Site:
 		return (''.join(s for s in name.lower() if s.isalnum() or s == ' ')).title()
 
 	def get_homepage(self):
-		return self._homepage  # !ciover
+		return self._homepage  # !cover
 
