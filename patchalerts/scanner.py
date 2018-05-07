@@ -18,6 +18,8 @@ parser.add_argument("--update", help="Update the config file and exit.", action=
 parser.add_argument("--base_dir", help="Override base storage directory.", type=str, metavar='')
 args = parser.parse_args()
 
+if args.test:
+	print('Running in test mode. All Games are enabled, and errors will crash the program.')
 
 storage_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../build/')
 if args.base_dir:
