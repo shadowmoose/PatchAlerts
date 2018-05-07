@@ -14,7 +14,7 @@ class Update:
 		self.game = game
 		self.url = post_url.strip()
 		self.name = update_name.strip().replace('\n', '').replace('\t', '') if update_name else '[Unknown Update Name]'
-		self.description = desc.strip() if desc else None
+		self.description = desc.strip().replace('\r', '') if desc else None
 		self.image = image.strip() if image else None
 		self.thumb = thumb.strip() if thumb else None
 		self.color = int(str(color).replace('#', ''), 16) if color else 123123
