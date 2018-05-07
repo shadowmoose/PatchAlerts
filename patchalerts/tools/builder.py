@@ -4,7 +4,7 @@
 """
 
 import os
-from games import base_class
+import games
 
 from util import version
 
@@ -33,7 +33,7 @@ with open(readme, 'r') as r:
 
 
 table = '|  | Supported Games |\n| ----- | ------------- |\n'
-for s in base_class.all_sites():
+for s in games.all_games():
 	table += '| [<img src="%s" width="48">](%s) | [%s](%s) |\n' % (s.icon, s.get_homepage(), s.name, s.get_homepage())
 
 out = out % table.strip()

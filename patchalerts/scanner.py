@@ -9,7 +9,7 @@ from util import db
 from util import printing as p
 from util import version
 from alerts.discord import Discord
-from games import base_class
+import games
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
@@ -24,7 +24,7 @@ if args.base_dir:
 	storage_dir = os.path.abspath(args.base_dir.strip())  # !cover
 
 alerts = [Discord()]
-sites = base_class.all_sites()
+games = games.all_games()
 
 
 config_file = os.path.join(storage_dir, 'config.yml')
@@ -57,7 +57,7 @@ for a in alerts:
 			print('\t+Enabled: %s' % a.enabled)
 	out['alerts'][a.formatted_name()] = a.get_save_obj()
 print()
-for s in sites:
+for s in games:
 	for k, v in site_data.items():
 		if s.formatted_name(k) == s.formatted_name():
 			s.load(v)
@@ -89,7 +89,7 @@ if args.update:   # !cover
 
 
 updates = []
-for s in sites:
+for s in games:
 	if not s.enabled and not args.test:
 		continue  # !cover
 	try:
