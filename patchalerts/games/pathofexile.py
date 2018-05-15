@@ -20,7 +20,7 @@ class PathOfExile(Site):
 		for forum in forums:
 			i += 1
 			if i > self.alert_level:
-				break
+				break  # !cover
 			soup = BeautifulSoup(requests.get(forum).text, "html.parser")
 			table = soup.find(attrs={"class": 'viewForumTable'})
 			elems = table.find('tbody').find_all('tr')
@@ -35,7 +35,7 @@ class PathOfExile(Site):
 			_url = 'https://www.pathofexile.com' + link["href"]
 			author = elem.find(attrs={'class': 'profile-link'})
 			if author.text.lower().strip() in self.ignore_authors.lower():
-				continue
+				continue  # !cover
 			page = BeautifulSoup(requests.get(_url).text, "html.parser")
 			dsc = page.find(attrs={'class': 'newsPost'})
 			if not dsc:
