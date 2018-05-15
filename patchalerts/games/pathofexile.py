@@ -23,7 +23,13 @@ class PathOfExile(Site):
 				break
 			soup = BeautifulSoup(requests.get(forum).text, "html.parser")
 			table = soup.find(attrs={"class": 'viewForumTable'})
-			elem = table.find('tbody').find('tr')
+			elems = table.find('tbody').find_all('tr')
+			elem = None
+			for e in elems:
+				# Skip to first non-sticky thread.
+				if not e.find(attrs={'class': 'sticky'}):
+					elem = e
+					break
 			ttl = elem.find(attrs={'class': 'title'})
 			link = ttl.find('a')
 			_url = 'https://www.pathofexile.com' + link["href"]
