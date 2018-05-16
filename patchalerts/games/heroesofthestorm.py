@@ -17,7 +17,7 @@ class HOTS(Site):
 			desc = box.find(attrs={'class': 'news-list__item__description'})
 			link = box.find('a')
 			_title = title.text
-			_desc = desc.get_text("\n").replace('\n\n', '\n').replace('\n\n', '\n')
+			_desc = desc.get_text("\n")
 			_url = link['href']
 			if 'http' not in _url:
 				_url = 'https://heroesofthestorm.com' + _url

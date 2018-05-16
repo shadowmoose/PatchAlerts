@@ -16,12 +16,7 @@ class Overwatch(Site):
 
 		_title = link.find('h3').text
 		_url = 'https://playoverwatch.com/en-us/game/patch-notes/pc/' + link['href']  # First link in sidebar.
-		_desc = 'Summary:\n\n'
-		pars = bod.find_all('p')
-		for p in pars[2:5]:
-			_desc += p.text + '\n\n'
-		_desc += '...'
-
+		_desc = 'Click here to read the patch notes.'
 		yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#f99e1a")
 
 

@@ -20,7 +20,7 @@ class RocketLeague(Site):
 		desc = page.find(attrs={'class': ['article', 'page-content']})
 		_desc = ''
 		for p in desc.find_all(['li', 'strong', 'h3']):
-			txt = p.text.replace('\t', '').replace('\n\n', '\n')
+			txt = p.text.replace('\t', '')
 			if 'h' in p.name:
 				txt = '**%s**' % txt
 			if 'li' in p.name:

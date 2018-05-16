@@ -17,7 +17,7 @@ class Diablo3(Site):
 			title = page.find(attrs={'class': 'subpatch-title'})
 			desc = page.find(attrs={'class': 'sub-patches'})
 			_title = title.get_text(" - ").strip().strip(' -')
-			_desc = desc.get_text("\n").replace('\n\n', '\n').replace('\n\n', '\n')
+			_desc = desc.get_text("\n")
 			yield Update(game=self.name, update_name=_title, post_url=url, desc=_desc, thumb=self.icon, color="#632004")
 
 

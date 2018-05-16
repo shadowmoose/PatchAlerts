@@ -16,7 +16,7 @@ class WorldOfTanks(Site):
 			title = box.find('h2')
 			desc = box.find(attrs={'class': 'spoiler_content'})
 			_title = title.get_text(" - ").strip().strip(' -')
-			_desc = desc.get_text("\n").replace('\n\n', '\n').replace('\n\n', '\n')
+			_desc = desc.get_text("\n")
 			_url = 'https://worldoftanks.com/en/content/docs/release_notes/#%s' % urllib.parse.quote(_title)
 			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#632004")
 
