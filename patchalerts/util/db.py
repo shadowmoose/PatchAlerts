@@ -38,5 +38,5 @@ def contains_game(update):
 	with closing(conn.cursor()) as cur:
 		cur.execute('SELECT * FROM updates WHERE game = :gm', {'gm': update.game})
 		if not cur.fetchone():
-			return False
+			return False  # !cover
 	return True

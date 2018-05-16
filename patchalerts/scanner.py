@@ -131,9 +131,8 @@ for u in updates:
 	db.put_completed(u)
 
 if args.test:
-	# Verify things are being properly documented.
+	# Verify things are being properly documented & stored.
 	assert db.contains_game(updates[0])
-	print('DB Size:', os.path.getsize(os.path.join(storage_dir, 'db.sqldb')))
+	print('DB Size: %s bytes' % os.path.getsize(os.path.join(storage_dir, 'db.sqldb')))
 print('Finished.')
-
 
