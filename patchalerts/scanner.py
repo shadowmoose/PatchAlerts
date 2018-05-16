@@ -109,18 +109,24 @@ for s in games:
 
 print('Found %s updates.' % len(updates))
 
+skip_games = set()  # If we encounter a new game, we ignore all alerts for that game on the first run, to cache.
+
 for u in updates:
 	if db.check_completed(u):  # !cover
 		p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
 		continue
-	p.out('\tFound update: [%s] %s' % (u.game, u.name))
-	for a in alerts:
-		if a.enabled:  # !cover
-			try:
-				a.alert(u)
-			except Exception:
-				if args.test:
-					raise
-				traceback.print_exc()
+	if u.game in skip_games or not db.contains_game(u):
+		p.out('\tFirst time finding updates for [%s], will not alert!' % u.game)
+		skip_games.add(u.game)
+	else:
+		p.out('\tFound update: [%s] %s' % (u.game, u.name))
+		for a in alerts:
+			if a.enabled:  # !cover
+				try:
+					a.alert(u)
+				except Exception:
+					if args.test:
+						raise
+					traceback.print_exc()
 	db.put_completed(u)
 
