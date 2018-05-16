@@ -115,7 +115,7 @@ for u in updates:
 	if db.check_completed(u):  # !cover
 		p.out('\tAlready handled: [%s] %s' % (u.game, u.name))
 		continue
-	if u.game in skip_games or (not args.test and not db.contains_game(u)):
+	if u.game in skip_games or (not args.test and not db.contains_game(u)):  # !cover
 		p.out('\tFirst time finding updates for [%s], will not alert!' % u.game)
 		skip_games.add(u.game)
 	else:
@@ -129,4 +129,11 @@ for u in updates:
 						raise
 					traceback.print_exc()
 	db.put_completed(u)
+
+if args.test:
+	# Verify things are being properly documented.
+	assert db.contains_game(updates[0])
+	print('DB Size:', os.path.getsize(os.path.join(storage_dir, 'db.sqldb')))
+print('Finished.')
+
 
