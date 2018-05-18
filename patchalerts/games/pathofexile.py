@@ -12,9 +12,9 @@ class PathOfExile(Site):
 
 	def scan(self):
 		forums = [
-				'https://www.pathofexile.com/forum/view-forum/patch-notes',
-				'https://www.pathofexile.com/forum/view-forum/dev-manifesto',
-				'https://www.pathofexile.com/forum/view-forum/news']  # In order of importance. alert_level is a cutoff here.
+				'https://www.pathofexile.com/forum/view-forum/366',
+				'https://www.pathofexile.com/forum/view-forum/419/orderby/create-time',
+				'https://www.pathofexile.com/forum/view-forum/54']  # In order of importance. alert_level is a cutoff here.
 
 		i = 0
 		for forum in forums:
