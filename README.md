@@ -42,7 +42,7 @@ To download & launch PatchAlerts in Docker, which will scan for new patch notes 
 
 Simply edit the ```config.yml``` file it generates in the data directory. No restart is necessary.
 
-See [below](#Setup) for more configuration information.
+See [below](#setup) for more configuration information.
 
 ## Non-Docker Requirements:
 
