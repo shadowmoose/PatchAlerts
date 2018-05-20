@@ -15,7 +15,7 @@ import games
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
 parser.add_argument("--test", help="Tells the program to check all games & exit on errors.", action="store_true")
 parser.add_argument("--update", help="Update the config file and exit.", action="store_true")
-parser.add_argument("--base_dir", help="Override base storage directory.", type=str, metavar='')
+parser.add_argument("--base_dir", '-d', help="Override base storage directory.", type=str, metavar='')
 parser.add_argument("--schedule", '-s', help="CRON time - if provided, will keep scanning on schedule.", type=str, metavar='')
 args = parser.parse_args()
 
