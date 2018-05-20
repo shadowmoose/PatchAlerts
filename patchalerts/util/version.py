@@ -18,7 +18,7 @@ def _git_version():
 		env['LANG'] = 'C'
 		env['LC_ALL'] = 'C'
 		_cwd = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
-		_out = subprocess.Popen(cmd, stdout=subprocess.PIPE, env=env, cwd=_cwd).communicate()[0]
+		_out = subprocess.Popen(cmd, stdout=subprocess.PIPE, env=env, cwd=_cwd, stderr=subprocess.DEVNULL).communicate()[0]
 		return _out
 
 	try:
