@@ -30,10 +30,29 @@ PatchAlerts supports quite a few popular games! Here's a full list:
 
 -----------------
 
+## Docker:
 
-## Requirements:
+[PatchAlerts has a Docker build!](https://hub.docker.com/r/shadowmoose/patchalerts/)
 
-It runs in [python 3](https://www.python.org/downloads/), and has no UI. It's perfect for throwing onto your own server somewhere, scheduled to run as often as you like. 
+If you have Docker installed, it's the simplest way to get started using PatchAlerts.
+
+To download & launch PatchAlerts in Docker, which will scan for new patch notes on a CRON schedule provided, it's as simple as:
+
+```sudo docker run -d --name PatchAlerts -v /build:/build shadowmoose/patchalerts -s '*/30 * * * *'```
+
+Simply edit the ```config.yml``` file it generates in the data directory. No restart is necessary.
+
+See [below](#Setup) for more configuration information.
+
+## Non-Docker Requirements:
+
+If you're running PatchAlerts locally without Docker, you'll need Python installed.
+
+It runs in [Python 3](https://www.python.org/downloads/), and has no UI. 
+
+## Setup:
+
+PatchAlerts is perfect for throwing onto your own server somewhere, scheduled to run as often as you like. 
 
 The only alert method currently supported is via Discord Webhook, which is a simple way to grant posting access without adding a whole user to your server. You'll need to create a hook in your [Discord Channel Settings](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks). You simply need to edit the URL created by the webhook into the configuration file (```build/config.yml```), like so:
 ```
@@ -43,7 +62,3 @@ alerts:
 ```
 
 While you're in there, make sure to set ```enabled: True``` for whatever Alerts and Games you want active.
-
-
-
-
