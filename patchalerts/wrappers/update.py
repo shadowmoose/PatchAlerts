@@ -20,7 +20,7 @@ class Update:
 		self.color = int(str(color).replace('#', ''), 16) if color else 123123
 		self._parse_desc()
 
-		if not self.url or 'http' not in self.url:
+		if not self.url or not self.url.startswith('http'):
 			raise Exception('URL Error: Update URL does not exist, or is relative: [%s]' % self.url)
 
 	def __str__(self):
@@ -32,13 +32,13 @@ class Update:
 		out = []
 		last = ''
 		for li in lines:  # !cover
-			if li.strip('.!?•').strip() == '':
+			if li.strip('.!?•,').strip() == '':
 				li = ''
 			if len(li.strip()) > 0 and any(li.startswith(c) for c in '\t-+*'):
 				li = '• %s' % li.strip().strip('\t-+*')
 			li = li.strip()
 			if len(li) > 5 and li.lower() in self.name.lower() and last == '':
-				li = ''
+				li = ''  # Remove update title.
 			if li != last:
 				out.append(li)
 				last = li
@@ -47,4 +47,4 @@ class Update:
 			self.description += '\n...'
 
 		if self.description and len(self.description) > 500:
-			self.description = self.description[0:500].strip().rstrip('.!?•') + '...'  # !cover
+			self.description = self.description[0:500].strip().rstrip('.!?•,') + '...'  # !cover
