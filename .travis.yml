@@ -9,7 +9,7 @@ install:
 script:
 - python ./patchalerts/scanner.py --update
 - coverage run ./patchalerts/scanner.py --test
-after_script:
+after_success:
 - COVERALLS_PARALLEL=true coveralls
 notifications:
   email:
