@@ -11,12 +11,12 @@ class Overwatch(Site):
 	def scan(self):
 		resp = requests.get("https://playoverwatch.com/en-us/news/patch-notes/pc/")
 		soup = BeautifulSoup(resp.text, "html.parser")
-		bod = soup.find(attrs={'class': 'patch-notes-body'})
-		link = soup.find(attrs={'class': 'blog-sidebar-list'}).find('a')
+		bod = soup.find(attrs={'class': 'patch-notes-patch'})
+		link = soup.find(attrs={'class': 'PatchNotesSideNav'}).find('a')
 
 		_title = link.find('h3').text
 		_url = 'https://playoverwatch.com/en-us/game/patch-notes/pc/' + link['href']  # First link in sidebar.
-		_desc = 'Click here to read the patch notes.'
+		_desc = bod.text
 		yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#f99e1a")
 
 
