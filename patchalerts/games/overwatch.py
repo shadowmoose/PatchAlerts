@@ -9,7 +9,7 @@ class Overwatch(Site):
 		super().__init__("Overwatch", 'https://i.imgur.com/Wp2Xlvw.png', homepage='https://playoverwatch.com/')
 
 	def scan(self):
-		resp = requests.get("https://playoverwatch.com/en-us/game/patch-notes/pc/")
+		resp = requests.get("https://playoverwatch.com/en-us/news/patch-notes/pc/")
 		soup = BeautifulSoup(resp.text, "html.parser")
 		bod = soup.find(attrs={'class': 'patch-notes-body'})
 		link = soup.find(attrs={'class': 'blog-sidebar-list'}).find('a')
