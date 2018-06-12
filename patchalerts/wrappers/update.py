@@ -1,5 +1,9 @@
+import re
+
 
 class Update:
+	bold_pattern = r"\[(.+?)\]"
+
 	def __init__(self, game, post_url, update_name, desc=None, image=None, thumb=None, color=None):
 		"""
 			Creates an Update wrapper object. Mostly exists just to normalize data, then transfer it to Alerters.
@@ -28,14 +32,17 @@ class Update:
 
 	def _parse_desc(self):
 		self.description = self.description.replace('\r', '')
+		for m in re.finditer(Update.bold_pattern, self.description):
+			self.description = self.description.replace(m.group(0), '__**%s**__' % m.group(1))
 		lines = self.description.split('\n')
 		out = []
 		last = ''
+		bullets = '\t-–+*•'
 		for li in lines:  # !cover
-			if li.strip('.!?•,').strip() == '':
+			if li.strip('.!?,'+bullets).strip() == '':
 				li = ''
-			if len(li.strip()) > 0 and any(li.startswith(c) for c in '\t-+*'):
-				li = '• %s' % li.strip().strip('\t-+*')
+			if len(li.strip()) > 0 and any(li.startswith(c) for c in bullets):
+				li = '• %s' % li.strip().strip(bullets)
 			li = li.strip()
 			if len(li) > 5 and li.lower() in self.name.lower() and last == '':
 				li = ''  # Remove update title.

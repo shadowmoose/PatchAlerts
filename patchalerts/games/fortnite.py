@@ -12,7 +12,7 @@ class Fortnite(Site):
 		resp = requests.get("https://www.epicgames.com/fortnite/en-US/patch-notes/")  # Follow redirect to latest.
 		soup = BeautifulSoup(resp.text, "html.parser")
 		_title = soup.find(attrs={'property': "og:title"})['content']
-		_desc = soup.find(attrs={'property': "og:description"})['content']
+		_desc = soup.find(attrs={'class': "patch-notes-text"}).get_text('\n')
 		_img = soup.find(attrs={'property': "og:image"})['content']
 		_url = resp.url
 		yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, image=_img, thumb=self.icon,
