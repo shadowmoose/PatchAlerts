@@ -16,7 +16,6 @@ class DBD(Site):
 		np = BeautifulSoup(requests.get(link).text, "html.parser")
 		for li in np.find_all('li'):
 			li.insert_before(soup.new_string("-"))  # Replace lists with bulletpoints.
-		print(np)
 		bod = np.find(attrs={'class': 'Item-Body'})
 		_url = link
 		_desc = bod.text.replace('Content - ', '')
