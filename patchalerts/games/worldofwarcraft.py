@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -10,13 +9,13 @@ class WorldOfWarcraft(Site):
 						homepage='https://worldofwarcraft.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("http://us.battle.net/wow/en/game/patch-notes/").text, "html.parser")
+		soup = loader.soup("http://us.battle.net/wow/en/game/patch-notes/")
 		latest = soup.find(attrs={'class': 'subpatches-nav'})
 		for link in latest.find_all('a'):
 			if 'overview' in link.text.lower():
 				continue
 			url = 'http://us.battle.net' + link['href']
-			page = BeautifulSoup(requests.get(url).text, "html.parser")
+			page = loader.soup(url)
 			title = page.find(attrs={'class': 'subpatch-title'})
 			desc = page.find(attrs={'class': 'sub-patches'})
 			_title = title.get_text(" - ").strip().strip(' -')

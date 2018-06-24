@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 from wrappers.update import Update
 from games.base_class import Site
+from util import loader
 
 
 class CSGO(Site):
@@ -9,7 +8,7 @@ class CSGO(Site):
 		super().__init__('CS:GO', icon='https://i.imgur.com/wlhfzUT.png', homepage='http://blog.counter-strike.net/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("http://blog.counter-strike.net/index.php/category/updates/").text, "html.parser")
+		soup = loader.soup("http://blog.counter-strike.net/index.php/category/updates/")
 		elems = soup.find_all(attrs={'class': 'inner_post'})
 		for elem in elems:
 			link = elem.find('a')

@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 from wrappers.update import Update
 from games.base_class import Site
+from util import loader
 
 
 class PUBG(Site):
@@ -9,17 +8,17 @@ class PUBG(Site):
 		super().__init__("PUBG", icon='https://i.imgur.com/KmmoncG.png', homepage='https://playbattlegrounds.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://playbattlegrounds.com/news.pu?type_cd=2").text, "html.parser")
-		table = soup.find(attrs={"id": "patchNoteList"})
-		elems = table.find_all('a')
+		soup = loader.soup("https://www.pubg.com/category/patch-notes/")
+		table = soup.find(attrs={"class": "l-gutters"})
+		elems = table.find_all(attrs={'class': 'l-gutters__item'})
 		for elem in elems:
-			link = elem
+			link = elem.find('a')
 			img = elem.find('img')
-			dsc = elem.find(attrs={"class": 'descrption'})  # Yes, they actually spelled 'description' wrong.
-			ttl = elem.find('h3')
+			dsc = elem.find('p')  # Yes, they actually spelled 'description' wrong.
+			ttl = elem.find('h2')
 			_url = 'https://playbattlegrounds.com' + link["href"]
 			_title = ttl.text
-			_img = img['src']
+			_img = img['src'] if img else None
 			_desc = dsc.text + '...'
 			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, image=_img,
 						color="#bf1866")

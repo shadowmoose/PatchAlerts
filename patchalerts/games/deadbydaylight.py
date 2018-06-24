@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 from wrappers.update import Update
 from games.base_class import Site
+from util import loader
 
 
 class DBD(Site):
@@ -9,7 +8,7 @@ class DBD(Site):
 		super().__init__('Dead By Daylight', icon='https://i.imgur.com/hL9PabV.png', homepage='http://deadbydaylight.com')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("http://deadbydaylight.com/posts/category/patch-notes/").text, "html.parser")
+		soup = loader.soup("http://archive.deadbydaylight.com/posts/category/patch-notes/")
 		elems = soup.find_all('article')
 		for elem in elems:
 			link = elem.find('a')

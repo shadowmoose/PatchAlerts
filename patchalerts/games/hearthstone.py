@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -9,7 +8,7 @@ class Hearthstone(Site):
 		super().__init__('Hearthstone', icon='https://i.imgur.com/fpsVoeK.png', homepage='https://playhearthstone.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://us.battle.net/forums/en/hearthstone/22814011/").text, "html.parser")
+		soup = loader.soup("https://us.battle.net/forums/en/hearthstone/22814011/")
 		table = soup.find(attrs={"class": 'Forum-ForumTopicList'})
 		elems = table.find_all(attrs={'class': 'ForumTopic'})
 		for elem in elems:

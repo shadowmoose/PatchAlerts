@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -21,7 +20,7 @@ class PathOfExile(Site):
 			i += 1
 			if i > self.alert_level:
 				break  # !cover
-			soup = BeautifulSoup(requests.get(forum).text, "html.parser")
+			soup = loader.soup(forum)
 			table = soup.find(attrs={"class": 'viewForumTable'})
 			elems = table.find('tbody').find_all('tr')
 			elem = None
@@ -36,7 +35,7 @@ class PathOfExile(Site):
 			author = elem.find(attrs={'class': 'profile-link'})
 			if author.text.lower().strip() in self.ignore_authors.lower():
 				continue  # !cover
-			page = BeautifulSoup(requests.get(_url).text, "html.parser")
+			page = loader.soup(_url)
 			dsc = page.find(attrs={'class': 'newsPost'})
 			if not dsc:
 				dsc = page.find(attrs={"class": 'content-container'}).find(attrs={'class': 'content'})

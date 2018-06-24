@@ -10,6 +10,8 @@ from util import printing as p
 from util import version
 from alerts.discord import Discord
 import games
+import requests
+from util import loader
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
@@ -97,9 +99,11 @@ def scan(all_games):
 			for u in s.scan():
 				updates.append(u)
 				_found = True
+				break
 			if not _found:
 				raise Exception('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
 		except Exception:
+			print('Error following URL: %s' % loader.latest_url)
 			if args.test:
 				raise
 			traceback.print_exc()
@@ -144,6 +148,10 @@ def run():
 		# Verify things are being properly documented & stored.
 		assert db.contains_game(upd[0])
 		print('DB Size: %s bytes' % os.path.getsize(os.path.join(storage_dir, 'db.sqldb')))
+
+
+session = requests.Session()
+session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
 
 
 if not args.schedule:

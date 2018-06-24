@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -9,7 +8,7 @@ class Warframe(Site):
 		super().__init__('Warframe', icon='http://i.imgur.com/lh5YKoc.png', homepage='https://www.warframe.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://forums.warframe.com/forum/3-pc-update-build-notes/").text, "html.parser")
+		soup = loader.soup("https://forums.warframe.com/forum/3-pc-update-build-notes/")
 		table = soup.find(attrs={"class": 'cTopicList'})
 		elems = table.find_all('li', attrs={'class': 'ipsDataItem'})
 		for elem in elems:

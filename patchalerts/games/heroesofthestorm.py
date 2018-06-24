@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -10,7 +9,7 @@ class HOTS(Site):
 						homepage='https://heroesofthestorm.com')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://heroesofthestorm.com/en-us/blog/").text, "html.parser")
+		soup = loader.soup("https://heroesofthestorm.com/en-us/blog/")
 		cont = soup.find(attrs={'class':'news-index-section'})
 		for box in cont.find_all(attrs={'class': 'news-list__item'}):
 			title = box.find(attrs={'class': 'news-list__item__title'})

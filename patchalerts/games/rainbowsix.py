@@ -1,5 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -10,11 +9,11 @@ class RainbowSix(Site):
 						homepage='https://rainbow6.ubisoft.com/siege/en-us/')
 
 	def scan(self):
-		data = requests.get("https://prod-tridionservice.ubisoft.com/live/v1/News/Latest?pageSize=6&pageIndex=0"
+		data = loader.json("https://prod-tridionservice.ubisoft.com/live/v1/News/Latest?pageSize=6&pageIndex=0"
 							"&language=en-US&templateId=tcm%3A152-76778-32&detailPageId=tcm%3A150-194572-64"
-							"&keywordList=233416&useSeoFriendlyUrl=true").json()['items']  # Returns XML
+							"&keywordList=233416&useSeoFriendlyUrl=true")['items']  # Returns XML
 		for p in data:
-			soup = BeautifulSoup(p['Content'], "html.parser")
+			soup = loader.direct_soup(p['Content'])
 			_img = soup.find('img')['src']
 			_title = soup.find('h3').text
 			_desc = soup.find('strong').text

@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 import urllib.parse
 from wrappers.update import Update
 from games.base_class import Site
@@ -10,7 +9,7 @@ class WorldOfTanks(Site):
 		super().__init__('World of Tanks', icon='https://i.imgur.com/eyYwEqS.png', homepage='https://worldoftanks.com')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://worldoftanks.com/en/content/docs/release_notes/").text, "html.parser")
+		soup = loader.soup("https://worldoftanks.com/en/content/docs/release_notes/")
 		latest = soup.find(attrs={'class': 'article-wrapper'})
 		for box in latest.find_all(attrs={'class': 'spoiler'}):
 			title = box.find('h2')

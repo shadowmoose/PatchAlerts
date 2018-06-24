@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -9,14 +8,12 @@ class RocketLeague(Site):
 		super().__init__('Rocket League', icon='https://i.imgur.com/0ikRetf.png', homepage='https://www.rocketleague.com')
 
 	def scan(self):
-		soup = BeautifulSoup(
-			requests.get("https://www.rocketleague.com/ajax/articles-results/?cat=7-5aa1f33-rqfqqm").text,
-			"html.parser")
+		soup = loader.soup("https://www.rocketleague.com/ajax/articles-results/?cat=7-5aa1f33-rqfqqm")
 		#  for a in soup.find_all('a'):  #  Multiple possible, but disabled for now.
 		a = soup.find('a')
 		_url = 'https://www.rocketleague.com' + a['href']
 		_title = a.text
-		page = BeautifulSoup(requests.get(_url).text, "html.parser")
+		page = loader.soup(_url)
 		desc = page.find(attrs={'class': ['article', 'page-content']})
 		_desc = ''
 		for p in desc.find_all(['li', 'strong', 'h3']):

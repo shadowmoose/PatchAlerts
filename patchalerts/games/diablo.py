@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 from wrappers.update import Update
 from games.base_class import Site
+from util import loader
 
 
 class Diablo3(Site):
@@ -9,11 +8,11 @@ class Diablo3(Site):
 		super().__init__('Diablo 3', icon='https://i.imgur.com/C9cNY2O.png', homepage='https://us.diablo3.com/en/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://us.diablo3.com/en/game/patch-notes/").text, "html.parser")
+		soup = loader.soup("https://us.diablo3.com/en/game/patch-notes/")
 		latest = soup.find(attrs={'class': 'subpatches-nav'})
 		for link in latest.find_all('a'):
 			url = 'https://us.diablo3.com' + link['href']
-			page = BeautifulSoup(requests.get(url).text, "html.parser")
+			page = loader.soup(url)
 			title = page.find(attrs={'class': 'subpatch-title'})
 			desc = page.find(attrs={'class': 'sub-patches'})
 			_title = title.get_text(" - ").strip().strip(' -')

@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -9,7 +8,7 @@ class LeagueOfLegends(Site):
 		super().__init__('League of Legends', icon='https://i.imgur.com/fyMlBLW.png', homepage='https://leagueoflegends.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://na.leagueoflegends.com/en/news/game-updates/patch").text, "html.parser")
+		soup = loader.soup("https://na.leagueoflegends.com/en/news/game-updates/patch")
 		elems = soup.find_all(attrs={"class": 'views-row'})
 		for elem in elems:
 			link = elem.find('a')

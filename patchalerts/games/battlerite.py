@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 from wrappers.update import Update
 from games.base_class import Site
+from util import loader
 
 
 class Battlerite(Site):
@@ -9,7 +8,7 @@ class Battlerite(Site):
 		super().__init__('Battlerite', icon='https://i.imgur.com/dDIezWP.png', homepage='https://www.battlerite.com/')
 
 	def scan(self):
-		soup = BeautifulSoup(requests.get("https://blog.battlerite.com/category/updates/").text, "html.parser")
+		soup = loader.soup("https://blog.battlerite.com/category/updates/")
 		elems = soup.find_all('article', id=lambda x: x and 'post' in x.lower())
 		for elem in elems:
 			link = elem.find('a')

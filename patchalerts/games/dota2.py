@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -10,8 +9,7 @@ class DOTA2(Site):
 
 	def scan(self):
 		found = []  # Gotta dedupe these, because the devs post everything twice.
-		resp = requests.get("http://www.dota2.com/news/updates/")
-		soup = BeautifulSoup(resp.text, "html.parser")
+		soup = loader.soup("http://www.dota2.com/news/updates/")
 		bod = soup.find(attrs={'id': 'mainLoop'})
 		for p in bod.find_all("div", id=lambda i: i and "post-" in i):
 			title = p.find(attrs={'class': 'entry-title'})

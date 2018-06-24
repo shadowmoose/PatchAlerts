@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -10,11 +9,11 @@ class GTA5(Site):
 						homepage='https://www.rockstargames.com/V/')
 
 	def scan(self):
-		dat = requests.get(
-			'https://www.rockstargames.com/rockstarsupport2a/knowledge-base/get-section/115002861208.json?locale=en-us').json()
+		dat = loader.json(
+			'https://www.rockstargames.com/rockstarsupport2a/knowledge-base/get-section/115002861208.json?locale=en-us')
 		articles = dat['section']['articles']
 		for a in articles:
-			soup = BeautifulSoup(a['body'], "html.parser")
+			soup = loader.direct_soup(a['body'])
 			_title = a['title']
 			_url = 'https://support.rockstargames.com/hc/articles/%s' % a['id']
 			_desc = soup.getText('\n').strip()

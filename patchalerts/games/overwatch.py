@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from util import loader
 from wrappers.update import Update
 from games.base_class import Site
 
@@ -9,8 +8,7 @@ class Overwatch(Site):
 		super().__init__("Overwatch", 'https://i.imgur.com/Wp2Xlvw.png', homepage='https://playoverwatch.com/')
 
 	def scan(self):
-		resp = requests.get("https://playoverwatch.com/en-us/news/patch-notes/pc/")
-		soup = BeautifulSoup(resp.text, "html.parser")
+		soup = loader.soup("https://playoverwatch.com/en-us/news/patch-notes/pc/")
 		bod = soup.find(attrs={'class': 'patch-notes-patch'})
 		link = soup.find(attrs={'class': 'PatchNotesSideNav'}).find('a')
 
