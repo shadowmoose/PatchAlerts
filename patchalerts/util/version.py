@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-backup_version = '1.8'
+backup_version = '1.9'
 
 
 # Return the git revision as a string
