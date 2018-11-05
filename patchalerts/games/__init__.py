@@ -18,12 +18,13 @@ from games.heroesofthestorm import HOTS
 from games.worldofwarcraft import WorldOfWarcraft
 from games.gta import GTA5
 from games.rocketleague import RocketLeague
+from games.rdr2 import RDR2
 
 
 _all_games = [
 	Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
 	Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix(), WorldOfTanks(),
-	HOTS(), WorldOfWarcraft(), GTA5(), RocketLeague()
+	HOTS(), WorldOfWarcraft(), GTA5(), RocketLeague(), RDR2()
 ]
 
 
