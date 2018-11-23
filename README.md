@@ -29,6 +29,7 @@ PatchAlerts supports quite a few popular games! Here's a full list:
 
 
 *Depending on my free time and interest, I may expand the list of supported games or alert methods. If you have one you'd like added, please open a request.*
+*This project is not in any way affiliated with or supported by these games, or their owners.*
 
 -----------------
 
