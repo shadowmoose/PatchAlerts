@@ -1,11 +1,11 @@
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 from util import loader
 
 
-class CSGO(Site):
+class CSGO(Game):
 	def __init__(self):
-		super().__init__('CS:GO', icon='https://i.imgur.com/wlhfzUT.png', homepage='http://blog.counter-strike.net/')
+		super().__init__('CS:GO', homepage='http://blog.counter-strike.net/')
 
 	def scan(self):
 		soup = loader.soup("http://blog.counter-strike.net/index.php/category/updates/")
@@ -15,7 +15,7 @@ class CSGO(Site):
 			_url = link["href"]
 			_title = link.text
 			_desc = elem.find('p', attrs={'class': None}).text
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#2f2217")
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#2f2217")
 
 
 if __name__ == "__main__":

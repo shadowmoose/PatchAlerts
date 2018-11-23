@@ -1,12 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class WorldOfWarcraft(Site):
+class WorldOfWarcraft(Game):
 	def __init__(self):
-		super().__init__('World of Warcraft', icon='https://i.imgur.com/zzpQhkw.png',
-						homepage='https://worldofwarcraft.com/')
+		super().__init__('World of Warcraft', homepage='https://worldofwarcraft.com/')
 
 	def scan(self):
 		soup = loader.soup("http://us.battle.net/wow/en/game/patch-notes/")
@@ -20,7 +19,7 @@ class WorldOfWarcraft(Site):
 			desc = page.find(attrs={'class': 'sub-patches'})
 			_title = title.get_text(" - ").strip().strip(' -')
 			_desc = desc.get_text("\n")
-			yield Update(game=self.name, update_name=_title, post_url=url, desc=_desc, thumb=self.icon, color="#78ab60")
+			yield Update(game=self, update_name=_title, post_url=url, desc=_desc, color="#78ab60")
 
 
 if __name__ == "__main__":

@@ -1,12 +1,12 @@
 from util import loader
 import urllib.parse
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class WorldOfTanks(Site):
+class WorldOfTanks(Game):
 	def __init__(self):
-		super().__init__('World of Tanks', icon='https://i.imgur.com/eyYwEqS.png', homepage='https://worldoftanks.com')
+		super().__init__('World of Tanks', homepage='https://worldoftanks.com')
 
 	def scan(self):
 		soup = loader.soup("https://worldoftanks.com/en/content/docs/release_notes/")
@@ -17,7 +17,7 @@ class WorldOfTanks(Site):
 			_title = title.get_text(" - ").strip().strip(' -')
 			_desc = desc.get_text("\n")
 			_url = 'https://worldoftanks.com/en/content/docs/release_notes/#%s' % urllib.parse.quote(_title)
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#632004")
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#632004")
 
 
 if __name__ == "__main__":

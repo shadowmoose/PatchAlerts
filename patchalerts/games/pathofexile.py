@@ -1,13 +1,13 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class PathOfExile(Site):
+class PathOfExile(Game):
 	def __init__(self):
 		self.alert_level = 3
 		self.ignore_terms = 'sale, showcase, interview'
-		super().__init__('Path of Exile', icon='https://i.imgur.com/4FYaeCh.png', homepage='https://pathofexile.com')
+		super().__init__('Path of Exile', homepage='https://pathofexile.com')
 
 	def scan(self):
 		forums = [
@@ -41,7 +41,7 @@ class PathOfExile(Site):
 			if not dsc:
 				dsc = page.find(attrs={"class": 'content-container'}).find(attrs={'class': 'content'})
 			_desc = dsc.getText('\n')
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#af6025")
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#af6025")
 
 
 if __name__ == "__main__":

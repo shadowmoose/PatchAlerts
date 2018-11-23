@@ -1,11 +1,11 @@
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 from util import loader
 
 
-class PUBG(Site):
+class PUBG(Game):
 	def __init__(self):
-		super().__init__("PUBG", icon='https://i.imgur.com/KmmoncG.png', homepage='https://playbattlegrounds.com/')
+		super().__init__("PUBG", homepage='https://playbattlegrounds.com/')
 
 	def scan(self):
 		soup = loader.soup("https://www.pubg.com/category/patch-notes/")
@@ -20,8 +20,7 @@ class PUBG(Site):
 			_title = ttl.text
 			_img = img['src'] if img else None
 			_desc = dsc.text + '...'
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, image=_img,
-						color="#bf1866")
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, image=_img, color="#bf1866")
 
 
 if __name__ == "__main__":

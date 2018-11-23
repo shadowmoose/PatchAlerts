@@ -1,11 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class DOTA2(Site):
+class DOTA2(Game):
 	def __init__(self):
-		super().__init__("DOTA 2", 'https://i.imgur.com/h1ExdFI.png', homepage='http://www.dota2.com')
+		super().__init__("DOTA 2", homepage='http://www.dota2.com')
 
 	def scan(self):
 		found = []  # Gotta dedupe these, because the devs post everything twice.
@@ -20,7 +20,7 @@ class DOTA2(Site):
 			_desc = desc.get_text("\n\n")  # Converts <br> tags to newlines.
 			if _url not in found:
 				found.append(_url)
-				yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#656565")
+				yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#656565")
 
 
 if __name__ == "__main__":

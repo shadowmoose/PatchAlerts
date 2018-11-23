@@ -12,15 +12,15 @@ class Update:
 			:param update_name: The Title this Update was given, if it was given one.
 			:param desc: The Update's summary, if it was given one.
 			:param image: A link to a full-sized image for this Update, if one is available.
-			:param thumb: A link to a thumbnail for this Update, if available.
+			:param thumb: A link to override the game thumbnail for this Update, if available.
 			:param color: The color (as a Hex String) to use for this post, if the Alerter chooses to.
 		"""
-		self.game = game
+		self.game = game.name if game else None
 		self.url = post_url.strip()
 		self.name = update_name.strip().replace('\n', '').replace('\t', '') if update_name else '[Unknown Update Name]'
 		self.description = desc.strip().replace('\r', '') if desc else None
 		self.image = image.strip() if image else None
-		self.thumb = thumb.strip() if thumb else None
+		self.thumb = thumb.strip() if thumb else game.get_icon_url()
 		self.color = int(str(color).replace('#', ''), 16) if color else 123123
 		self._parse_desc()
 

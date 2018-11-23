@@ -1,11 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class Hearthstone(Site):
+class Hearthstone(Game):
 	def __init__(self):
-		super().__init__('Hearthstone', icon='https://i.imgur.com/fpsVoeK.png', homepage='https://playhearthstone.com/')
+		super().__init__('Hearthstone', homepage='https://playhearthstone.com/')
 
 	def scan(self):
 		soup = loader.soup("https://us.battle.net/forums/en/hearthstone/22814011/")
@@ -16,7 +16,7 @@ class Hearthstone(Site):
 			_url = 'https://us.battle.net' + elem["href"]
 			_title = dsc.text
 			_desc = dsc['data-tooltip-content']
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#6785c2")
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#6785c2")
 
 
 if __name__ == "__main__":

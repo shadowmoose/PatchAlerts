@@ -1,12 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class RDR2(Site):
+class RDR2(Game):
 	def __init__(self):
-		super().__init__('Red Dead Redemption 2', icon='https://i.imgur.com/5YaKSwZ.png',
-						homepage='https://www.rockstargames.com/reddeadredemption2/')
+		super().__init__('Red Dead Redemption 2', homepage='https://www.rockstargames.com/reddeadredemption2/')
 
 	def scan(self):
 		dat = loader.json(
@@ -19,7 +18,7 @@ class RDR2(Site):
 			_image = None
 			if 'preview_images_parsed' in a and 'featured' in a['preview_images_parsed']:
 				_image = a['preview_images_parsed']['featured']['src']
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color="#588622", image=_image)
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#588622", image=_image)
 
 
 if __name__ == "__main__":

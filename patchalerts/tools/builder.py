@@ -3,10 +3,11 @@
 	Be Warned: This is really bad code.
 """
 
+
 import os
-import games
 
 from util import version
+import games
 
 if 'y' not in input('Is version: [%s] correct? (y/n): ' % version.backup_version).lower():
 	raise Exception('Invalid version!')
@@ -15,6 +16,20 @@ readme = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../../R
 
 if not os.path.exists(readme):
 	raise Exception('No README!')
+
+"""
+# noinspection PyPackageRequirements
+from PIL import Image
+import requests
+from io import BytesIO
+os.makedirs('../../icons/', exist_ok=True)
+for idx, g in enumerate(games.all_games()):
+	print(g.name, g.get_icon_file_name())
+	response = requests.get(g._icon)
+	img = Image.open(BytesIO(response.content))
+	img.thumbnail([48, 48])
+	img.save('../../icons/%s' % g.get_icon_file_name())
+"""
 
 # Really bad, really fast table replace.
 out = ''
@@ -34,13 +49,18 @@ with open(readme, 'r') as r:
 
 table = '|  | Supported Games | | |\n| ----- | ------------- |----- | ------------- |\n'
 it = iter(games.all_games())
+odd = False
 for s in it:
-	table += '| [<img src="%s" width="48">](%s) | [%s](%s) |' % (s.icon, s.get_homepage(), s.name, s.get_homepage())
-	try:
-		n = next(it)
-		table += ' [<img src="%s" width="48">](%s) | [%s](%s) |' % (n.icon, n.get_homepage(), n.name, n.get_homepage())
-	except StopIteration:
-		table += '  |  |'
+	odd = not odd
+	if not os.path.isfile('../../icons/%s' % s.get_icon_file_name()):
+		raise FileNotFoundError('Missing Icon for game: %s' % os.path.abspath('../../icons/%s' % s.get_icon_file_name()))
+	if odd:
+		table += '| '
+	table += '[![%s](%s)](%s) | [%s](%s) |' % (s.name, s.get_icon_url(), s.get_homepage(), s.name, s.get_homepage())
+	if not odd:
+		table += '\n'
+if odd:
+	table += '  |  |'
 	table += '\n'
 
 out = out % table.strip()

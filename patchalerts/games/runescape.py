@@ -1,11 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class Runescape(Site):
+class Runescape(Game):
 	def __init__(self):
-		super().__init__('Runescape', icon='https://i.imgur.com/QTqit7h.png', homepage='https://runescape.com/')
+		super().__init__('Runescape', homepage='https://runescape.com/')
 
 	def scan(self):
 		data = loader.json("http://services.runescape.com/m=news/latestNews.json?cat=1")['newsItems']
@@ -14,8 +14,7 @@ class Runescape(Site):
 			_url = p['link']
 			_desc = p['summary']
 			_img = p['summaryImageLink']
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#f8ca40',
-						image=_img)
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color='#f8ca40', image=_img)
 
 
 if __name__ == "__main__":

@@ -1,12 +1,11 @@
 from util import loader
 from wrappers.update import Update
-from games.base_class import Site
+from games.base_class import Game
 
 
-class RainbowSix(Site):
+class RainbowSix(Game):
 	def __init__(self):
-		super().__init__('Rainbow Six Siege', icon='https://i.imgur.com/FdrriRp.png',
-						homepage='https://rainbow6.ubisoft.com/siege/en-us/')
+		super().__init__('Rainbow Six Siege', homepage='https://rainbow6.ubisoft.com/siege/en-us/')
 
 	def scan(self):
 		data = loader.json("https://prod-tridionservice.ubisoft.com/live/v1/News/Latest?pageSize=6&pageIndex=0"
@@ -18,8 +17,7 @@ class RainbowSix(Site):
 			_title = soup.find('h3').text
 			_desc = soup.find('strong').text
 			_url = 'https://rainbow6.ubisoft.com/' + soup.find('a')['href']
-			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#333740',
-						image=_img)
+			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color='#333740', image=_img)
 
 
 if __name__ == "__main__":
