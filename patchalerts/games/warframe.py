@@ -15,7 +15,7 @@ class Warframe(Site):
 			link = elem.find('a')
 			_url = link["href"]
 			_title = link.text
-			_desc = link.text
+			_desc = 'Click to read more.'
 			yield Update(game=self.name, update_name=_title, post_url=_url, desc=_desc, thumb=self.icon, color='#C0C0C0')
 
 
