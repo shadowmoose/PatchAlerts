@@ -1,5 +1,7 @@
 # PatchAlerts
 [![Build Status](https://travis-ci.org/shadowmoose/PatchAlerts.svg?branch=master)](https://travis-ci.org/shadowmoose/PatchAlerts)[![Coverage Status](https://coveralls.io/repos/github/shadowmoose/PatchAlerts/badge.svg?branch=master)](https://coveralls.io/github/shadowmoose/PatchAlerts?branch=master)
+[![Docker Build Status](https://img.shields.io/docker/build/shadowmoose/patchalerts.svg)](https://hub.docker.com/r/shadowmoose/patchalerts/)
+
 
 **Tired of hopping into a game, only to find that you've missed the latest nerf? Want to make sure you and your friends are updated on the meta, or know when that server restart is coming?**
 
