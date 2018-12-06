@@ -99,7 +99,6 @@ def scan(all_games):
 			for u in s.scan():
 				updates.append(u)
 				_found = True
-				break
 			if not _found:
 				raise Exception('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
 		except Exception:

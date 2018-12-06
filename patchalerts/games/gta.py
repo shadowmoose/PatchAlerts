@@ -12,9 +12,9 @@ class GTA5(Game):
 			'https://www.rockstargames.com/newswire/tags.json?tags=591&page=1')
 		posts = dat['posts']
 		for a in posts:
-			_title = a['title'].split('<')[0]
+			_title = loader.direct_soup(a['title']).get_text()
 			_url = a['link']
-			_desc = a['blurb'].split('<')[0].replace('\n\n', '\n').replace('\n\n', '\n')
+			_desc = loader.direct_soup(a['blurb']).get_text()
 			_image = None
 			if 'preview_images_parsed' in a and 'featured' in a['preview_images_parsed']:
 				_image = a['preview_images_parsed']['featured']['src']
