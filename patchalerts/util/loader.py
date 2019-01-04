@@ -12,7 +12,7 @@ def _load(url, use_json=False):
 		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
 	}
 	latest_url = url
-	_resp = requests.get(url, headers=headers)
+	_resp = requests.get(url, headers=headers, timeout=10)
 	if use_json:
 		return _resp.json()
 	else:
