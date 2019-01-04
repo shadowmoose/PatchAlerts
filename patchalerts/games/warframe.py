@@ -10,8 +10,8 @@ class Warframe(Game):
 	def scan(self):
 		soup = loader.soup("https://forums.warframe.com/forum/3-pc-update-build-notes/")
 		table = soup.find(attrs={"class": 'cTopicList'})
-		if table is None:
-			print(soup.prettify())
+		if 'ERROR: The request could not be satisfied' in soup.prettify():
+			return
 		elems = table.find_all('li', attrs={'class': 'ipsDataItem'})
 		for elem in elems:
 			link = elem.find('a')
