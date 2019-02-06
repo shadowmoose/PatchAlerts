@@ -12,6 +12,7 @@ from alerts.discord import Discord
 import games
 import requests
 from util import loader
+from util.errors import TemporarySiteException
 
 
 parser = argparse.ArgumentParser(description="Tool for scanning Game patch notes, and relaying them to you.")
@@ -101,6 +102,9 @@ def scan(all_games):
 				_found = True
 			if not _found:
 				raise Exception('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
+		except TemporarySiteException:
+			traceback.print_exc()
+			pass
 		except Exception:
 			print('Error following URL: %s' % loader.latest_url)
 			if args.test:

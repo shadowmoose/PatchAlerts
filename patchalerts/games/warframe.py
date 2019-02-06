@@ -1,6 +1,7 @@
 from util import loader
 from wrappers.update import Update
 from games.base_class import Game
+from util.errors import TemporarySiteException
 
 
 class Warframe(Game):
@@ -11,7 +12,7 @@ class Warframe(Game):
 		soup = loader.soup("https://forums.warframe.com/forum/3-pc-update-build-notes/")
 		table = soup.find(attrs={"class": 'cTopicList'})
 		if 'ERROR: The request could not be satisfied' in soup.prettify():
-			return
+			raise TemporarySiteException()
 		elems = table.find_all('li', attrs={'class': 'ipsDataItem'})
 		for elem in elems:
 			link = elem.find('a')
