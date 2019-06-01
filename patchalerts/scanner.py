@@ -105,8 +105,9 @@ def scan(all_games):
 		except TemporarySiteException:
 			traceback.print_exc()
 			pass
-		except Exception:
+		except Exception as e:
 			print('Error following URL: %s' % loader.latest_url)
+			print(e)
 			if args.test:
 				raise
 			traceback.print_exc()

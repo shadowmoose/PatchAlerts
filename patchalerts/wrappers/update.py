@@ -22,7 +22,8 @@ class Update:
 		self.image = image.strip() if image else None
 		self.thumb = thumb.strip() if thumb else game.get_icon_url()
 		self.color = int(str(color).replace('#', ''), 16) if color else 123123
-		self._parse_desc()
+		if self.description:
+			self._parse_desc()
 
 		if not self.url or not self.url.startswith('http'):
 			raise Exception('URL Error: Update URL does not exist, or is relative: [%s]' % self.url)
