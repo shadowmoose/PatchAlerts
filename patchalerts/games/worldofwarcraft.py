@@ -1,3 +1,4 @@
+import html
 from util import loader
 from wrappers.update import Update
 from games.base_class import Game
@@ -9,16 +10,13 @@ class WorldOfWarcraft(Game):
 
 	def scan(self):
 		soup = loader.soup("http://us.battle.net/wow/en/game/patch-notes/")
-		latest = soup.find(attrs={'class': 'subpatches-nav'})
-		for link in latest.find_all('a'):
-			if 'overview' in link.text.lower():
-				continue
+		for item in soup.find_all(attrs={'class': 'NewsBlog'}):
+			link = item.find('a')
 			url = 'http://us.battle.net' + link['href']
-			page = loader.soup(url)
-			title = page.find(attrs={'class': 'subpatch-title'})
-			desc = page.find(attrs={'class': 'sub-patches'})
+			title = item.find(attrs={'class': 'NewsBlog-title'})
+			desc = item.find(attrs={'class': 'NewsBlog-desc'})
 			_title = title.get_text(" - ").strip().strip(' -')
-			_desc = desc.get_text("\n")
+			_desc = html.unescape(desc.get_text("\n").replace('\u200b', '').strip())
 			yield Update(game=self, update_name=_title, post_url=url, desc=_desc, color="#78ab60")
 
 
