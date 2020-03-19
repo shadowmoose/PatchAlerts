@@ -8,15 +8,14 @@ class RainbowSix(Game):
 		super().__init__('Rainbow Six Siege', homepage='https://rainbow6.ubisoft.com/siege/en-us/')
 
 	def scan(self):
-		data = loader.json("https://prod-tridionservice.ubisoft.com/live/v1/News/Latest?pageSize=6&pageIndex=0"
-							"&language=en-US&templateId=tcm%3A152-76778-32&detailPageId=tcm%3A150-194572-64"
-							"&keywordList=233416&useSeoFriendlyUrl=true")['items']  # Returns XML
+		data = loader.json("https://www.ubisoft.com/api/updates/items?categoriesFilter="
+							"game-updates&limit=6&mediaFilter=all&skip=0&startIndex=undefined"
+							"&locale=en-us&fallbackLocale=en-us&tag=BR-rainbow-six%20GA-siege")['items']
 		for p in data:
-			soup = loader.direct_soup(p['Content'])
-			_img = soup.find('img')['src']
-			_title = soup.find('h3').text
-			_desc = soup.find('strong').text
-			_url = 'https://rainbow6.ubisoft.com/' + soup.find('a')['href']
+			_img = p['thumbnail']['url']
+			_title = p['title']
+			_desc = p['abstract']
+			_url = 'https://www.ubisoft.com/en-us/game/rainbow-six/siege' + p['button']['buttonUrl']
 			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color='#333740', image=_img)
 
 
