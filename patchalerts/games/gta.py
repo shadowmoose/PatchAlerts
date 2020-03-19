@@ -9,7 +9,7 @@ class GTA5(Game):
 
 	def scan(self):
 		dat = loader.json(
-			'https://www.rockstargames.com/newswire/tags.json?tags=591&page=1')
+			'https://www.rockstargames.com/newswire/get-posts.json?page=1&tag_id=591')
 		posts = dat['posts']
 		for a in posts:
 			_title = loader.direct_soup(a['title']).get_text()

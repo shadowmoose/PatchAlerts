@@ -9,7 +9,7 @@ class RDR2(Game):
 
 	def scan(self):
 		dat = loader.json(
-			'https://www.rockstargames.com/newswire/tags.json?tags=716&page=1')
+			'https://www.rockstargames.com/newswire/get-posts.json?tags=716&page=1')
 		posts = dat['posts']
 		for a in posts:
 			_title = a['title'].split('<')[0]
