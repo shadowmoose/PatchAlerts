@@ -9,7 +9,6 @@ class Hearthstone(Game):
 
 	def scan(self):
 		soup = loader.soup("https://playhearthstone.com/en-us/blog//infinite?page=1&articleType=blog")
-		print('Soup:', soup)
 		elems = soup.find_all('li')
 		for elem in elems:
 			a = elem.find(attrs={"class": "article-title"}).find(attrs={'class': 'media--link'})
