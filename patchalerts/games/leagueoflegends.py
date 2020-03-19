@@ -9,16 +9,15 @@ class LeagueOfLegends(Game):
 
 	def scan(self):
 		soup = loader.soup("https://na.leagueoflegends.com/en/news/game-updates/patch")
-		elems = soup.find_all(attrs={"class": 'views-row'})
+		elems = soup.find_all('article')
 		for elem in elems:
-			link = elem.find('a')
+			link = elem.parent
 			img = elem.find('img')
-			dsc = elem.find(attrs={"class": 'field-type-text-long'})
-			ttl = elem.find('h4')
+			ttl = elem.find('h2')
 			_url = 'https://na.leagueoflegends.com' + link["href"]
 			_title = ttl.text
-			_img = 'https://na.leagueoflegends.com' + img['src']
-			_desc = dsc.text
+			_img = img['src']
+			_desc = 'Click here to read more!'
 			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, image=_img, color="#e6ac00")
 
 
