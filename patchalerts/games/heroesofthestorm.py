@@ -8,19 +8,16 @@ class HOTS(Game):
 		super().__init__('Heroes of the Storm', homepage='https://heroesofthestorm.com')
 
 	def scan(self):
-		soup = loader.soup("https://heroesofthestorm.com/en-us/blog/")
-		cont = soup.find(attrs={'class':'news-index-section'})
-		for box in cont.find_all(attrs={'class': 'news-list__item'}):
-			title = box.find(attrs={'class': 'news-list__item__title'})
-			desc = box.find(attrs={'class': 'news-list__item__description'})
-			link = box.find('a')
+		encoded = loader.json('https://news.blizzard.com/en-us/blog/list?pageNum=1&pageSize=30&community=heroes-of-the-storm')
+		soup = loader.direct_soup(encoded['html'])
+		elems = soup.find_all(attrs={'class': 'ArticleListItem'})
+		for elem in elems:
+			a = elem.find('a')
+			dsc = elem.find(attrs={"class": 'ArticleListItem-description'})
+			title = elem.find(attrs={'class': 'ArticleListItem-title'})
+			_url = 'https://news.blizzard.com/' + a['href']
 			_title = title.text
-			_desc = desc.get_text("\n")
-			_url = link['href']
-			if 'http' not in _url:
-				_url = 'https://heroesofthestorm.com' + _url
-			if not any(s in _title.lower() for s in ['hotfix', 'update', 'patch']):
-				continue
+			_desc = dsc.text
 			yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#632004")
 
 
