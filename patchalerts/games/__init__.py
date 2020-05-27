@@ -19,14 +19,17 @@ from games.worldofwarcraft import WorldOfWarcraft
 from games.gta import GTA5
 from games.rocketleague import RocketLeague
 from games.rdr2 import RDR2
+from games.seaofthieves import SeaOfThieves
 
 
 _all_games = [
-	Battlerite(), LeagueOfLegends(), HuntShowdown(), PathOfExile(), Warframe(), PUBG(), Fortnite(),
-	Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(), DBD(), Runescape(), RainbowSix(), WorldOfTanks(),
-	HOTS(), WorldOfWarcraft(), GTA5(), RocketLeague(), RDR2()
+    Battlerite(), LeagueOfLegends(), HuntShowdown(
+    ), PathOfExile(), Warframe(), PUBG(), Fortnite(),
+    Hearthstone(), CSGO(), Overwatch(), DOTA2(), Diablo3(
+    ), DBD(), Runescape(), RainbowSix(), WorldOfTanks(),
+    HOTS(), WorldOfWarcraft(), GTA5(), RocketLeague(), RDR2(), SeaOfThieves()
 ]
 
 
 def all_games():
-	return sorted(_all_games, key=lambda x: x.name, reverse=False)
+    return sorted(_all_games, key=lambda x: x.name, reverse=False)
