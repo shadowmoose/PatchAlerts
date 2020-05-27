@@ -10,13 +10,12 @@ from util import version
 import games
 
 if 'y' not in input('Is version: [%s] correct? (y/n): ' % version.backup_version).lower():
-    raise Exception('Invalid version!')
+	raise Exception('Invalid version!')
 
-readme = os.path.abspath(os.path.dirname(
-    os.path.realpath(__file__)) + '/../../README.md')
+readme = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../../README.md')
 
 if not os.path.exists(readme):
-    raise Exception('No README!')
+	raise Exception('No README!')
 
 """
 # noinspection PyPackageRequirements
@@ -35,43 +34,41 @@ for idx, g in enumerate(games.all_games()):
 # Really bad, really fast table replace.
 out = ''
 with open(readme, 'r') as r:
-    tbl = False
-    for line in r.readlines():
-        if '| Supported Games' in line:
-            tbl = True
-            out += '%s\n'
-        if tbl and not line.startswith('|'):
-            tbl = False
-        if not tbl:
-            out += line
-    if tbl:
-        raise Exception(
-            "ERROR: Didn't reach end of supported games table. Cannot build.")
+	tbl = False
+	for line in r.readlines():
+		if '| Supported Games' in line:
+			tbl = True
+			out += '%s\n'
+		if tbl and not line.startswith('|'):
+			tbl = False
+		if not tbl:
+			out += line
+	if tbl:
+		raise Exception("ERROR: Didn't reach end of supported games table. Cannot build.")
 
 
 table = '|  | Supported Games | | |\n| ----- | ------------- |----- | ------------- |\n'
 it = iter(games.all_games())
 odd = False
 for s in it:
-    odd = not odd
-    if not os.path.isfile('../../icons/%s' % s.get_icon_file_name()):
-        raise FileNotFoundError('Missing Icon for game: %s' % os.path.abspath(
-            '../../icons/%s' % s.get_icon_file_name()))
-    if odd:
-        table += '| '
-    table += '[![%s](%s)](%s) | [%s](%s) |' % (s.name,
-                                               s.get_icon_url(), s.get_homepage(), s.name, s.get_homepage())
-    if not odd:
-        table += '\n'
+	odd = not odd
+	if not os.path.isfile('../../icons/%s' % s.get_icon_file_name()):
+		raise FileNotFoundError('Missing Icon for game: %s' % os.path.abspath('../../icons/%s' % s.get_icon_file_name()))
+	if odd:
+		table += '| '
+	table += '[![%s](%s)](%s) | [%s](%s) |' % (s.name, s.get_icon_url(), s.get_homepage(), s.name, s.get_homepage())
+	if not odd:
+		table += '\n'
 if odd:
-    table += '  |  |'
-    table += '\n'
+	table += '  |  |'
+	table += '\n'
 
 out = out % table.strip()
 
 print(table)
 
 with open(readme, 'w') as o:
-    o.write(out)
+	o.write(out)
 
 print('Built README.md')
+
