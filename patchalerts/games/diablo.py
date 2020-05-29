@@ -9,15 +9,15 @@ class Diablo3(Game):
 
 	def scan(self):
 		soup = loader.soup("https://us.diablo3.com/en/game/patch-notes/")
-		latest = soup.find(attrs={'class': 'subpatches-nav'})
-		for link in latest.find_all('a'):
-			url = 'https://us.diablo3.com' + link['href']
-			page = loader.soup(url)
-			title = page.find(attrs={'class': 'subpatch-title'})
-			desc = page.find(attrs={'class': 'sub-patches'})
-			_title = title.get_text(" - ").strip().strip(' -')
+		for article in soup.find_all(attrs={'class': 'article-wrapper'}):
+			anchor = article.find('a')
+			url = 'https://us.diablo3.com' + anchor['href']
+			title = article.find(attrs={'class': 'article-title'})
+			desc = article.find(attrs={'class': 'article-summary'})
+			img = 'https:' + article.find('meta', attrs={'itemprop': 'thumbnailUrl'})['content']
+			_title = title.get_text(" - ")
 			_desc = desc.get_text("\n")
-			yield Update(game=self, update_name=_title, post_url=url, desc=_desc, color="#632004")
+			yield Update(game=self, update_name=_title, post_url=url, desc=_desc, color="#632004", image=img)
 
 
 if __name__ == "__main__":

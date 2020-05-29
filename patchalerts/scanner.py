@@ -91,6 +91,7 @@ def load():
 def scan(all_games):
 	""" Scan the given Games, and returns updates found for them. """
 	updates = []
+	errors = []
 	for s in all_games:
 		if not s.enabled and not args.test:
 			continue  # !cover
@@ -100,18 +101,19 @@ def scan(all_games):
 			for u in s.scan():
 				updates.append(u)
 				_found = True
-			if not _found:
-				raise Exception('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
+			if not _found and args.test:
+				errors.append('ERROR: Handler [%s] found 0 updates! Expects at least 1.' % s.name)
 		except TemporarySiteException:
 			traceback.print_exc()
 			pass
 		except Exception as e:
 			print('Error following URL: %s' % loader.latest_url)
-			print(e)
 			if args.test:
-				raise
+				errors.append('ERROR: Handler [%s] "%s"' % (s.name, e))
 			traceback.print_exc()
 	print('Found %s updates.' % len(updates))
+	if len(errors):
+		raise Exception('  |  '.join(errors))
 	return updates
 
 

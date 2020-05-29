@@ -15,6 +15,7 @@ if 'y' not in input('Is version: [%s] correct? (y/n): ' % version.backup_version
 readme = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../../README.md')
 
 if not os.path.exists(readme):
+	print(readme)
 	raise Exception('No README!')
 
 """

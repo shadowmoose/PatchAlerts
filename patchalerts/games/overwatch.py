@@ -9,12 +9,11 @@ class Overwatch(Game):
 
 	def scan(self):
 		soup = loader.soup("https://playoverwatch.com/en-us/news/patch-notes/pc/")
-		bod = soup.find(attrs={'class': 'patch-notes-patch'})
-		link = soup.find(attrs={'class': 'PatchNotesSideNav'}).find('a')
-
-		_title = link.find('h3').text
-		_url = 'https://playoverwatch.com/en-us/game/patch-notes/pc/' + link['href']  # First link in sidebar.
-		_desc = bod.text
+		bod = soup.find_all(attrs={'class': 'PatchNotes-section'})
+		date = soup.find(attrs={'class': 'PatchNotes-patch'})['id'].replace(' ', '')
+		_title = soup.find(attrs={'class': 'PatchNotes-patchTitle'}).text
+		_url = 'https://playoverwatch.com/en-us/news/patch-notes#%s' % date
+		_desc = bod[1].text if len(bod) else bod[0].text
 		yield Update(game=self, update_name=_title, post_url=_url, desc=_desc, color="#f99e1a")
 
 

@@ -7,6 +7,7 @@ class Update:
 	def __init__(self, game, post_url, update_name, desc=None, image=None, thumb=None, color=None):
 		"""
 			Creates an Update wrapper object. Mostly exists just to normalize data, then transfer it to Alerters.
+
 			:param game: The name of the Game.
 			:param post_url: The URL this Update can be read at.
 			:param update_name: The Title this Update was given, if it was given one.

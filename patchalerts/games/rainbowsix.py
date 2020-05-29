@@ -8,9 +8,14 @@ class RainbowSix(Game):
 		super().__init__('Rainbow Six Siege', homepage='https://rainbow6.ubisoft.com/siege/en-us/')
 
 	def scan(self):
-		data = loader.json("https://www.ubisoft.com/api/updates/items?categoriesFilter="
-							"game-updates&limit=6&mediaFilter=all&skip=0&startIndex=undefined"
-							"&locale=en-us&fallbackLocale=en-us&tag=BR-rainbow-six%20GA-siege")['items']
+		data = loader.json("https://www.ubisoft.com/api/updates/items?categoriesFilter=game-updates"
+							"&limit=6"
+							"&mediaFilter=all"
+							"&skip=0"
+							"&startIndex=undefined"
+							"&locale=en-us"
+							"&fallbackLocale=en-us"
+							"&tags=BR-rainbow-six%20GA-siege")['items']
 		for p in data:
 			_img = p['thumbnail']['url']
 			_title = p['title']
